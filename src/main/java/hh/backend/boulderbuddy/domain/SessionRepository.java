@@ -1,5 +1,13 @@
 package hh.backend.boulderbuddy.domain;
 
-public interface SessionRepository {
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+import java.time.LocalDate;
+
+
+public interface SessionRepository extends CrudRepository<Session, Long> {
+
+    List<Session> findByDate(LocalDate date);
 
 }

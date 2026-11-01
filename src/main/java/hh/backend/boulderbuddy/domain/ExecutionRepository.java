@@ -1,5 +1,11 @@
 package hh.backend.boulderbuddy.domain;
 
-public interface ExecutionRepository {
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface ExecutionRepository extends CrudRepository<Execution, Long> {
+
+    List<Execution> findByRoute(Route route);
 
 }

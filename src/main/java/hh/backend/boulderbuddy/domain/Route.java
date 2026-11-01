@@ -85,8 +85,5 @@ public class Route {
                     + status + "]";
     }
 
-    
-    
-
 
 }
