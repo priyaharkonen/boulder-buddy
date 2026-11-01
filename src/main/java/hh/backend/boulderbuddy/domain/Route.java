@@ -1,11 +1,15 @@
 package hh.backend.boulderbuddy.domain;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 
 @Entity 
@@ -17,9 +21,13 @@ public class Route {
     private Long routeId;
     private String color, style, grade, status;
 
+    /* JPA Relationships */
     @ManyToOne
     @JoinColumn(name = "gymId")
     private Gym gym;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "route")
+    List<Execution> executions;
 
     public Route() {}
 
@@ -57,6 +65,10 @@ public class Route {
     public Gym getGym() {
         return gym;
     }
+    
+    public List<Execution> getExecutions() {
+        return executions;
+    }
 
     /* Setters */
     public void setRouteId(Long routeId) {
@@ -83,6 +95,10 @@ public class Route {
         this.gym = gym;
     }
 
+    public void setExecutions(List<Execution> executions) {
+        this.executions = executions;
+    }
+
     @Override
     public String toString() {
        
@@ -93,6 +109,7 @@ public class Route {
             return "Route [routeId=" + routeId + ", color=" + color + ", style=" + style + ", grade=" + grade + ", status="
                     + status + "]";
     }
+
 
 
 }

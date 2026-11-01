@@ -22,6 +22,9 @@ public class Gym {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gym")
     private List<Route> routes;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gym")
+    private List<Session> sessions;
+
     public Gym() {}
 
     /* Constructors */
@@ -43,6 +46,10 @@ public class Gym {
         return routes;
     }
 
+    public List<Session> getSessions() {
+        return sessions;
+    }
+
     /* Setters */
     public void setGymId(Long gymId) {
         this.gymId = gymId;
@@ -54,6 +61,10 @@ public class Gym {
 
     public void setRoutes(List<Route> routes) {
         this.routes = routes;
+    }
+
+    public void setSessions(List<Session> sessions) {
+        this.sessions = sessions;
     }
 
     /* toString */

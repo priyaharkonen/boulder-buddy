@@ -24,12 +24,13 @@ public class Session {
     private LocalDate date;
     private LocalTime startTime, duration;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "execution")
-    private List<Execution> executions;
-    
+    /* JPA Relationships */
     @ManyToOne
     @JoinColumn(name = "gymId")
     private Gym gym;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "session")
+    private List<Execution> executions;
 
     public Session() {}
 
