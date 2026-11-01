@@ -76,6 +76,7 @@ public class Route {
 
     @Override
     public String toString() {
+       
         if(this.gym != null)
             return "Route [routeId=" + routeId + ", color=" + color + ", style=" + style + ", grade=" + grade + ", status="
                     + status + ", gym=" + gym + "]";
