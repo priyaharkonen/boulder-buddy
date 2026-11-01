@@ -2,18 +2,33 @@ package hh.backend.boulderbuddy.domain;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity 
 public class Session {
 
     /* Attributes */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long sessionId;
     private String title;
     private LocalDate date;
     private LocalTime startTime, duration;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "execution")
+    private List<Execution> executions;
+    
+    @ManyToOne
+    @JoinColumn(name = "gymId")
     private Gym gym;
 
     public Session() {}
@@ -53,6 +68,10 @@ public class Session {
         return gym;
     }
 
+    public List<Execution> getExecutions() {
+        return executions;
+    }
+
     /* Setters */
     public void setSessionId(Long sessionId) {
         this.sessionId = sessionId;
@@ -76,6 +95,10 @@ public class Session {
 
     public void setGym(Gym gym) {
         this.gym = gym;
+    }
+
+    public void setExecutions(List<Execution> executions) {
+        this.executions = executions;
     }
 
     @Override
