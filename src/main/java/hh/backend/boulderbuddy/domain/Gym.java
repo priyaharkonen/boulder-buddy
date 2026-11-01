@@ -18,6 +18,7 @@ public class Gym {
     private Long gymId;
     private String name;
 
+    /* JPA Relationship */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gym")
     private List<Route> routes;
 

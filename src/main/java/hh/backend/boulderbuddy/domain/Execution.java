@@ -1,16 +1,29 @@
 package hh.backend.boulderbuddy.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity 
 public class Execution {
 
     /* Attributes */
+    @Id 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long executionId;
     private int count, tries;
     private String status, effort;
 
+    /* JPA Relationships */
+    @ManyToOne 
+    @JoinColumn(name = "routeId")
     private Route route;
+    
+    @ManyToOne 
+    @JoinColumn(name = "sessionId")
     private Session session;
 
     public Execution() {}

@@ -1,15 +1,24 @@
 package hh.backend.boulderbuddy.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 
 @Entity 
 public class Route {
 
     /* Attributes */
+    @Id 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long routeId;
     private String color, style, grade, status;
 
+    @ManyToOne
+    @JoinColumn(name = "gymId")
     private Gym gym;
 
     public Route() {}
