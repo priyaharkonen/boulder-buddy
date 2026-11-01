@@ -1,9 +1,13 @@
 package hh.backend.boulderbuddy.domain;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity 
 public class Gym {
@@ -13,6 +17,9 @@ public class Gym {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long gymId;
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gym")
+    private List<Route> routes;
 
     public Gym() {}
 
@@ -31,6 +38,10 @@ public class Gym {
         return name;
     }
 
+    public List<Route> getRoutes() {
+        return routes;
+    }
+
     /* Setters */
     public void setGymId(Long gymId) {
         this.gymId = gymId;
@@ -38,6 +49,10 @@ public class Gym {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
     }
 
     /* toString */
