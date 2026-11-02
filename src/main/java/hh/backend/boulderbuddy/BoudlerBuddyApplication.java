@@ -7,12 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class BoulderbuddyApplication {
+public class BoudlerBuddyApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(BoulderbuddyApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(BoudlerBuddyApplication.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(BoulderbuddyApplication.class, args);
+		SpringApplication.run(BoudlerBuddyApplication.class, args);
 	}
 
 }
