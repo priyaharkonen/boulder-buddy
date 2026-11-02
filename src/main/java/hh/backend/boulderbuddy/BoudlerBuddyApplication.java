@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import hh.backend.boulderbuddy.domain.AppUser;
 import hh.backend.boulderbuddy.domain.AppUserRepository;
 import hh.backend.boulderbuddy.domain.Execution;
 import hh.backend.boulderbuddy.domain.ExecutionRepository;
@@ -52,7 +53,8 @@ public class BoudlerBuddyApplication {
 
 			/* Sessions */
 			Session session1 = sRepository.save(
-					new Session("Demo sessio 1", 
+					new Session(
+					"Demo sessio 1", 
 					LocalDate.of(2026, 10, 29), 
 					LocalTime.of(18, 5), 
 					LocalTime.of(1, 47), 
@@ -69,6 +71,25 @@ public class BoudlerBuddyApplication {
 			/* Executions */
 			eRepository.save( new Execution(2, 4, "Sent", "Moderate", route1, session1));
 			eRepository.save( new Execution(2, 8, "Project", "Hard", route2, session2));
+
+			/* Users */
+			AppUser	demoUser1 = 
+				new AppUser(
+					"admin_demo", 
+					"$2a$12$Gdi1Pb7ZXj3thY8M/asR8uFQsxzcc2gQRxl4LmK0k3BmVRU0prhIC", 
+					"admin.demo@boulderbuddy.com", 
+					"ADMIN");
+			
+			AppUser demoUser2 = 
+				new AppUser(
+					"user_demo", 
+					"$2a$12$6zHmZ6WkTPcFI5TDtddzzOJpNuPhDxiyoQLOtqZdwR5aaiG/jhlda", 
+					"user.demo@boulderbuddy.com", 
+					"USER");
+				
+			aRepository.save(demoUser1);
+			aRepository.save(demoUser2);
+
 		};
 	}
 
