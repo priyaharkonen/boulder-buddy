@@ -27,7 +27,7 @@ public class Route {
     private Gym gym;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "route")
-    List<Execution> executions;
+    private List<Execution> executions;
 
     public Route() {}
 
