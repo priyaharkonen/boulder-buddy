@@ -46,10 +46,10 @@ public class BoudlerBuddyApplication {
 
 			/* Routes */
 			Route route1 = rRepository.save(
-				new Route("Blue", "Slab", "6C", "Current", salmis));
+				new Route("Blue", "Slab", "Grimps and pockets", "6C", "Current", salmis));
 			
 			Route route2 = rRepository.save(
-				new Route("White", "Slab", "6C", "Current", redi));
+				new Route("White", "Slab", "Grimps", "6C", "Current", redi));
 
 			/* Sessions */
 			Session session1 = sRepository.save(

@@ -19,7 +19,7 @@ public class Route {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long routeId;
-    private String color, style, grade, status;
+    private String color, wall, holds, grade, status;
 
     /* JPA Relationships */
     @ManyToOne
@@ -32,26 +32,32 @@ public class Route {
     public Route() {}
 
     /* Constructors */
-    public Route(String color, String style, String grade, String status, Gym gym) {
-        super();
-        this.color = color;
-        this.style = style;
-        this.grade = grade;
-        this.status = status;
-        this.gym = gym;
-    }
-
+    
     /* Getters */
     public Long getRouteId() {
         return routeId;
+    }
+
+    public Route(String color, String wall, String holds, String grade, String status, Gym gym) {
+        super();
+        this.color = color;
+        this.wall = wall;
+        this.holds = holds;
+        this.grade = grade;
+        this.status = status;
+        this.gym = gym;
     }
 
     public String getColor() {
         return color;
     }
 
-    public String getStyle() {
-        return style;
+    public String getWall() {
+        return wall;
+    }
+
+    public String getHolds() {
+        return holds;
     }
 
     public String getGrade() {
@@ -79,8 +85,12 @@ public class Route {
         this.color = color;
     }
 
-    public void setStyle(String style) {
-        this.style = style;
+    public void setWall(String wall) {
+        this.wall = wall;
+    }
+
+    public void setHolds(String holds) {
+        this.holds = holds;
     }
 
     public void setGrade(String grade) {
@@ -103,13 +113,12 @@ public class Route {
     public String toString() {
        
         if(this.gym != null)
-            return "Route [routeId=" + routeId + ", color=" + color + ", style=" + style + ", grade=" + grade + ", status="
-                    + status + ", gym=" + gym + "]";
+            return "Route [routeId=" + routeId + ", color=" + color + ", wall=" + wall + ", holds=" + holds + ", grade="
+                + grade + ", status=" + status + ", gym=" + gym + "]";
         else
-            return "Route [routeId=" + routeId + ", color=" + color + ", style=" + style + ", grade=" + grade + ", status="
-                    + status + "]";
+            return "Route [routeId=" + routeId + ", color=" + color + ", wall=" + wall + ", holds=" + holds + ", grade="
+                + grade + ", status=" + status + "]";
     }
-
 
 
 }
