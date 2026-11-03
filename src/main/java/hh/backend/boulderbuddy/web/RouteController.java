@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class RouteController {
 
     private final RouteRepository routeRepository;
-    private final GymRepository gRepository;
+    private final GymRepository gymRepository;
     
-    public RouteController(RouteRepository routeRepository, GymRepository gRepository) {
+    public RouteController(RouteRepository rRepository, GymRepository gRepository) {
         
-        this.routeRepository = routeRepository;
-        this.gRepository = gRepository;
+        this.routeRepository = rRepository;
+        this.gymRepository = gRepository;
    
     }
 
@@ -29,8 +29,5 @@ public class RouteController {
         return "routelist";
     }
     
-
-
-
 
 }
