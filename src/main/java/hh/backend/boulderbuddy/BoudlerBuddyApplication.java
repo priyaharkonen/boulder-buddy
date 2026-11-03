@@ -75,15 +75,15 @@ public class BoudlerBuddyApplication {
 			/* Users */
 			AppUser	demoUser1 = 
 				new AppUser(
-					"admin_demo", 
-					"$2a$12$Gdi1Pb7ZXj3thY8M/asR8uFQsxzcc2gQRxl4LmK0k3BmVRU0prhIC", 
+					"admindemo", 
+					"$2a$12$p2XeAKK0dm.puExf3bhzJOE9jDdjS0DgWPLKTAmcFNXKX8TXGYl/K", /* demoadmin */
 					"admin.demo@boulderbuddy.com", 
 					"ADMIN");
 			
 			AppUser demoUser2 = 
 				new AppUser(
-					"user_demo", 
-					"$2a$12$6zHmZ6WkTPcFI5TDtddzzOJpNuPhDxiyoQLOtqZdwR5aaiG/jhlda", 
+					"userdemo", 
+					"$2a$12$DusC49YYlYkgmBKRirA.UO7.vpYVndpF4iaLTpMQKJZpQV4g.SJ5O", /* demouser */
 					"user.demo@boulderbuddy.com", 
 					"USER");
 				
