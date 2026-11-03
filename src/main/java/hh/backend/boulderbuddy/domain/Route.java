@@ -32,12 +32,6 @@ public class Route {
     public Route() {}
 
     /* Constructors */
-    
-    /* Getters */
-    public Long getRouteId() {
-        return routeId;
-    }
-
     public Route(String color, String wall, String holds, String grade, String status, Gym gym) {
         super();
         this.color = color;
@@ -47,6 +41,12 @@ public class Route {
         this.status = status;
         this.gym = gym;
     }
+    
+    /* Getters */
+    public Long getRouteId() {
+        return routeId;
+    }
+
 
     public String getColor() {
         return color;
