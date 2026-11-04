@@ -4,18 +4,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import hh.backend.boulderbuddy.domain.GymRepository;
-import hh.backend.boulderbuddy.domain.RouteRepository;
+import hh.backend.boulderbuddy.domain.BoulderRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller 
-public class RouteController {
+public class BoulderController {
 
-    private final RouteRepository routeRepository;
+    private final BoulderRepository routeRepository;
     private final GymRepository gymRepository;
     
-    public RouteController(RouteRepository rRepository, GymRepository gRepository) {
+    public BoulderController(BoulderRepository rRepository, GymRepository gRepository) {
         
         this.routeRepository = rRepository;
         this.gymRepository = gRepository;
@@ -23,10 +23,10 @@ public class RouteController {
     }
 
     /* Routelist */
-    @GetMapping("/routes")
+    @GetMapping("/boulders")
     public String routeList(Model model) {
-        model.addAttribute("routes", routeRepository.findAll());
-        return "routelist";
+        model.addAttribute("boulders", routeRepository.findAll());
+        return "boulderlist";
     }
     
 

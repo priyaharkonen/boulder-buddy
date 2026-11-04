@@ -13,12 +13,12 @@ import jakarta.persistence.OneToMany;
 
 
 @Entity 
-public class Route {
+public class Boulder {
 
     /* Attributes */
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long routeId;
+    private Long boulderId;
     private String color, wall, holds, grade, status;
 
     /* JPA Relationships */
@@ -26,13 +26,13 @@ public class Route {
     @JoinColumn(name = "gymId")
     private Gym gym;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "route")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "boulder")
     private List<Execution> executions;
 
-    public Route() {}
+    public Boulder() {}
 
     /* Constructors */
-    public Route(String color, String wall, String holds, String grade, String status, Gym gym) {
+    public Boulder(String color, String wall, String holds, String grade, String status, Gym gym) {
         super();
         this.color = color;
         this.wall = wall;
@@ -43,8 +43,8 @@ public class Route {
     }
     
     /* Getters */
-    public Long getRouteId() {
-        return routeId;
+    public Long getBoulderId() {
+        return boulderId;
     }
 
 
@@ -77,8 +77,8 @@ public class Route {
     }
 
     /* Setters */
-    public void setRouteId(Long routeId) {
-        this.routeId = routeId;
+    public void setBoulderId(Long routeId) {
+        this.boulderId = routeId;
     }
 
     public void setColor(String color) {
@@ -113,10 +113,10 @@ public class Route {
     public String toString() {
        
         if(this.gym != null)
-            return "Route [routeId=" + routeId + ", color=" + color + ", wall=" + wall + ", holds=" + holds + ", grade="
+            return "Boulder [boulderId=" + boulderId + ", color=" + color + ", wall=" + wall + ", holds=" + holds + ", grade="
                 + grade + ", status=" + status + ", gym=" + gym + "]";
         else
-            return "Route [routeId=" + routeId + ", color=" + color + ", wall=" + wall + ", holds=" + holds + ", grade="
+            return "Boulder [boulderId=" + boulderId + ", color=" + color + ", wall=" + wall + ", holds=" + holds + ", grade="
                 + grade + ", status=" + status + "]";
     }
 

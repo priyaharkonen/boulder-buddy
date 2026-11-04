@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Routelist</title>
+    <title>Boulderlist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
@@ -10,7 +10,7 @@
 <body>
    <div class="container">
 	<div class="col-md-4">
-		<h1>Routes</h1>	
+		<h1>Boudlers</h1>	
 	</div>
     <!-- TABLE -->
      <table>
@@ -23,13 +23,13 @@
             <th>Status</th>
         </tr>
         <!-- Contents -->
-         <tr th:each = "route: ${routes}">
-            <td th:text="${route.color}"></td>
-            <td th:text="${route.wall}"></td>
-            <td th:text="${route.holds}"></td>
-            <td th:text="${route.grade}"></td>
-            <td th:text="${route.status}"></td>
-            <td th:text="${route.gym.name}"></td>
+         <tr th:each = "boulder: ${boulders}">
+            <td th:text="${boulder.color}"></td>
+            <td th:text="${boulder.wall}"></td>
+            <td th:text="${boulder.holds}"></td>
+            <td th:text="${boulder.grade}"></td>
+            <td th:text="${boulder.status}"></td>
+            <td th:text="${boulder.gym.name}"></td>
          </tr>
 
      </table>

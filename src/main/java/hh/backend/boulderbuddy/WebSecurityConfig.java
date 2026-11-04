@@ -16,12 +16,12 @@ public class WebSecurityConfig {
 
         http
         .authorizeHttpRequests( authorize -> authorize
-            .requestMatchers("/css/**","/", "/routes").permitAll() 
+            .requestMatchers("/css/**","/", "/boulders").permitAll() 
             .anyRequest().authenticated()
         )
 
         .formLogin( loginForm -> loginForm
-            .defaultSuccessUrl("/routes", true)
+            .defaultSuccessUrl("/boulders", true)
             .permitAll()
         )
         .logout( logout -> logout

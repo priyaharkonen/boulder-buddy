@@ -19,8 +19,8 @@ public class Execution {
 
     /* JPA Relationships */
     @ManyToOne 
-    @JoinColumn(name = "routeId")
-    private Route route;
+    @JoinColumn(name = "boulderId")
+    private Boulder boulder;
     
     @ManyToOne 
     @JoinColumn(name = "sessionId")
@@ -29,13 +29,13 @@ public class Execution {
     public Execution() {}
 
     /* Constructors */
-    public Execution(int count, int tries, String status, String effort, Route route, Session session) {
+    public Execution(int count, int tries, String status, String effort, Boulder boulder, Session session) {
         super();
         this.count = count;
         this.tries = tries;
         this.status = status;
         this.effort = effort;
-        this.route = route;
+        this.boulder = boulder;
         this.session = session;
     }
 
@@ -60,8 +60,8 @@ public class Execution {
         return effort;
     }
 
-    public Route getRoute() {
-        return route;
+    public Boulder getBoulder() {
+        return boulder;
     }
 
     public Session getSession() {
@@ -88,20 +88,20 @@ public class Execution {
     public void setEffort(String effort) {
         this.effort = effort;
     }
-
-    public void setRoute(Route route) {
-        this.route = route;
+    public void setBoulder(Boulder boulder) {
+        this.boulder = boulder;
     }
 
     public void setSession(Session session) {
         this.session = session;
     }
 
+
     /* toString */
     @Override
     public String toString() {
         return "Execution [executionId=" + executionId + ", count=" + count + ", tries=" + tries + ", status=" + status
-                + ", effort=" + effort + ", route=" + route + ", session=" + session + "]";
+                + ", effort=" + effort + ", route=" + boulder + ", session=" + session + "]";
     }
 
 

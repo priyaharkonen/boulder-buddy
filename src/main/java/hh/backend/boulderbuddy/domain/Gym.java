@@ -20,7 +20,7 @@ public class Gym {
 
     /* JPA Relationship */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gym")
-    private List<Route> routes;
+    private List<Boulder> boulders;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gym")
     private List<Session> sessions;
@@ -42,8 +42,8 @@ public class Gym {
         return name;
     }
 
-    public List<Route> getRoutes() {
-        return routes;
+    public List<Boulder> getBoulders() {
+        return boulders;
     }
 
     public List<Session> getSessions() {
@@ -59,13 +59,14 @@ public class Gym {
         this.name = name;
     }
 
-    public void setRoutes(List<Route> routes) {
-        this.routes = routes;
+    public void setBoulders(List<Boulder> boulders) {
+        this.boulders = boulders;
     }
 
     public void setSessions(List<Session> sessions) {
         this.sessions = sessions;
     }
+
 
     /* toString */
     @Override

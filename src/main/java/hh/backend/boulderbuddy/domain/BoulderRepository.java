@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface RouteRepository extends CrudRepository<Route, Long> {
+public interface BoulderRepository extends CrudRepository<Boulder, Long> {
 
-    List<Route> findByColor(String color);
+    List<Boulder> findByColor(String color);
 
 }

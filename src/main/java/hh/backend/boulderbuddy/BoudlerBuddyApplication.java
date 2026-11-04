@@ -16,8 +16,8 @@ import hh.backend.boulderbuddy.domain.Execution;
 import hh.backend.boulderbuddy.domain.ExecutionRepository;
 import hh.backend.boulderbuddy.domain.Gym;
 import hh.backend.boulderbuddy.domain.GymRepository;
-import hh.backend.boulderbuddy.domain.Route;
-import hh.backend.boulderbuddy.domain.RouteRepository;
+import hh.backend.boulderbuddy.domain.Boulder;
+import hh.backend.boulderbuddy.domain.BoulderRepository;
 import hh.backend.boulderbuddy.domain.Session;
 import hh.backend.boulderbuddy.domain.SessionRepository;
 
@@ -33,7 +33,7 @@ public class BoudlerBuddyApplication {
 
 	/* Demo data for testing */
 	@Bean
-	public CommandLineRunner BoulderBuddyDemoData(GymRepository gRepository, RouteRepository rRepository,
+	public CommandLineRunner BoulderBuddyDemoData(GymRepository gRepository, BoulderRepository rRepository,
 												  SessionRepository sRepository, ExecutionRepository eRepository,
 												  AppUserRepository aRepository) {
 		return (args) -> {
@@ -45,11 +45,11 @@ public class BoudlerBuddyApplication {
 				new Gym("KiipeilyAreena Kalasatama"));
 
 			/* Routes */
-			Route route1 = rRepository.save(
-				new Route("Blue", "Slab", "Grimps and pockets", "6C", "Current", salmis));
+			Boulder boulder1 = rRepository.save(
+				new Boulder("Blue", "Slab", "Grimps and pockets", "6C", "Current", salmis));
 			
-			Route route2 = rRepository.save(
-				new Route("White", "Slab", "Grimps", "6C", "Current", redi));
+			Boulder boulder2 = rRepository.save(
+				new Boulder("White", "Slab", "Grimps", "6C", "Current", redi));
 
 			/* Sessions */
 			Session session1 = sRepository.save(
@@ -69,8 +69,8 @@ public class BoudlerBuddyApplication {
 					redi));
 			
 			/* Executions */
-			eRepository.save( new Execution(2, 4, "Sent", "Moderate", route1, session1));
-			eRepository.save( new Execution(2, 8, "Project", "Hard", route2, session2));
+			eRepository.save( new Execution(2, 4, "Sent", "Moderate", boulder1, session1));
+			eRepository.save( new Execution(2, 8, "Project", "Hard", boulder2, session2));
 
 			/* Users */
 			AppUser	demoUser1 = 
