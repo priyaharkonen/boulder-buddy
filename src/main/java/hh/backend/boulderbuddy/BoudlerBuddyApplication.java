@@ -44,7 +44,7 @@ public class BoudlerBuddyApplication {
 			Gym redi = gRepository.save(
 				new Gym("KiipeilyAreena Kalasatama"));
 
-			/* Routes */
+			/* Boulders */
 			Boulder boulder1 = rRepository.save(
 				new Boulder("Blue", "Slab", "Grimps and pockets", "6C", "Current", salmis));
 			

@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller 
 public class BoulderController {
 
-    private final BoulderRepository routeRepository;
+    private final BoulderRepository boulderRepository;
     private final GymRepository gymRepository;
     
-    public BoulderController(BoulderRepository rRepository, GymRepository gRepository) {
+    public BoulderController(BoulderRepository bRepository, GymRepository gRepository) {
         
-        this.routeRepository = rRepository;
+        this.boulderRepository = bRepository;
         this.gymRepository = gRepository;
    
     }
 
-    /* Routelist */
+    /* Boulderlist */
     @GetMapping("/boulders")
-    public String routeList(Model model) {
-        model.addAttribute("boulders", routeRepository.findAll());
+    public String boulderList(Model model) {
+        model.addAttribute("boulders", boulderRepository.findAll());
         return "boulderlist";
     }
     

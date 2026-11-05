@@ -77,8 +77,8 @@ public class Boulder {
     }
 
     /* Setters */
-    public void setBoulderId(Long routeId) {
-        this.boulderId = routeId;
+    public void setBoulderId(Long boulderId) {
+        this.boulderId = boulderId;
     }
 
     public void setColor(String color) {

@@ -101,7 +101,7 @@ public class Log {
     @Override
     public String toString() {
         return "Log [logId=" + logId + ", count=" + count + ", tries=" + tries + ", status=" + status
-                + ", effort=" + effort + ", route=" + boulder + ", session=" + session + "]";
+                + ", effort=" + effort + ", boulder=" + boulder + ", session=" + session + "]";
     }
 
 
