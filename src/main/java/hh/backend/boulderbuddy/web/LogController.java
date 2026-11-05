@@ -1,5 +1,5 @@
 package hh.backend.boulderbuddy.web;
 
-public class ExecutionController {
+public class LogController {
 
 }

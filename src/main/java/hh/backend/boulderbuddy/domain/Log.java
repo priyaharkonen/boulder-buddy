@@ -69,8 +69,8 @@ public class Log {
     }
 
     /* Setters */
-    public void setLogId(Long executionId) {
-        this.logId = executionId;
+    public void setLogId(Long log) {
+        this.logId = log;
     }
 
     public void setCount(int count) {
