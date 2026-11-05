@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface ExecutionRepository extends CrudRepository<Execution, Long> {
+public interface LogRepository extends CrudRepository<Log, Long> {
 
-    List<Execution> findByRoute(Boulder route);
+    List<Log> findByRoute(Boulder route);
 
 }

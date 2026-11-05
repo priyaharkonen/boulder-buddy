@@ -30,7 +30,7 @@ public class Session {
     private Gym gym;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "session")
-    private List<Execution> executions;
+    private List<Log> logs;
 
     public Session() {}
 
@@ -69,8 +69,8 @@ public class Session {
         return gym;
     }
 
-    public List<Execution> getExecutions() {
-        return executions;
+    public List<Log> getLogs() {
+        return logs;
     }
 
     /* Setters */
@@ -98,8 +98,8 @@ public class Session {
         this.gym = gym;
     }
 
-    public void setExecutions(List<Execution> executions) {
-        this.executions = executions;
+    public void setLogs(List<Log> logs) {
+        this.logs = logs;
     }
 
     @Override

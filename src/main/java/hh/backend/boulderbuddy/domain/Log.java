@@ -8,12 +8,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity 
-public class Execution {
+public class Log {
 
     /* Attributes */
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long executionId;
+    private Long logId;
     private int count, tries;
     private String status, effort;
 
@@ -26,10 +26,10 @@ public class Execution {
     @JoinColumn(name = "sessionId")
     private Session session;
 
-    public Execution() {}
+    public Log() {}
 
     /* Constructors */
-    public Execution(int count, int tries, String status, String effort, Boulder boulder, Session session) {
+    public Log(int count, int tries, String status, String effort, Boulder boulder, Session session) {
         super();
         this.count = count;
         this.tries = tries;
@@ -40,8 +40,8 @@ public class Execution {
     }
 
     /* Getters */
-    public Long getExecutionId() {
-        return executionId;
+    public Long getLogId() {
+        return logId;
     }
 
     public int getCount() {
@@ -69,8 +69,8 @@ public class Execution {
     }
 
     /* Setters */
-    public void setExecutionId(Long executionId) {
-        this.executionId = executionId;
+    public void setLogId(Long executionId) {
+        this.logId = executionId;
     }
 
     public void setCount(int count) {
@@ -100,7 +100,7 @@ public class Execution {
     /* toString */
     @Override
     public String toString() {
-        return "Execution [executionId=" + executionId + ", count=" + count + ", tries=" + tries + ", status=" + status
+        return "Log [logId=" + logId + ", count=" + count + ", tries=" + tries + ", status=" + status
                 + ", effort=" + effort + ", route=" + boulder + ", session=" + session + "]";
     }
 

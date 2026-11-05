@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Bean;
 
 import hh.backend.boulderbuddy.domain.AppUser;
 import hh.backend.boulderbuddy.domain.AppUserRepository;
-import hh.backend.boulderbuddy.domain.Execution;
-import hh.backend.boulderbuddy.domain.ExecutionRepository;
+import hh.backend.boulderbuddy.domain.Log;
+import hh.backend.boulderbuddy.domain.LogRepository;
 import hh.backend.boulderbuddy.domain.Gym;
 import hh.backend.boulderbuddy.domain.GymRepository;
 import hh.backend.boulderbuddy.domain.Boulder;
@@ -34,7 +34,7 @@ public class BoudlerBuddyApplication {
 	/* Demo data for testing */
 	@Bean
 	public CommandLineRunner BoulderBuddyDemoData(GymRepository gRepository, BoulderRepository rRepository,
-												  SessionRepository sRepository, ExecutionRepository eRepository,
+												  SessionRepository sRepository, LogRepository eRepository,
 												  AppUserRepository aRepository) {
 		return (args) -> {
 			log.info("save demo data");
@@ -68,9 +68,9 @@ public class BoudlerBuddyApplication {
 					LocalTime.of(1, 40), 
 					redi));
 			
-			/* Executions */
-			eRepository.save( new Execution(2, 4, "Sent", "Moderate", boulder1, session1));
-			eRepository.save( new Execution(2, 8, "Project", "Hard", boulder2, session2));
+			/* Logs */
+			eRepository.save( new Log(2, 4, "Sent", "Moderate", boulder1, session1));
+			eRepository.save( new Log(2, 8, "Project", "Hard", boulder2, session2));
 
 			/* Users */
 			AppUser	demoUser1 = 

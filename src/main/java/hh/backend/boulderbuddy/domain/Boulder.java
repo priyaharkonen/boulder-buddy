@@ -27,7 +27,7 @@ public class Boulder {
     private Gym gym;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "boulder")
-    private List<Execution> executions;
+    private List<Log> executions;
 
     public Boulder() {}
 
@@ -72,7 +72,7 @@ public class Boulder {
         return gym;
     }
     
-    public List<Execution> getExecutions() {
+    public List<Log> getExecutions() {
         return executions;
     }
 
@@ -105,7 +105,7 @@ public class Boulder {
         this.gym = gym;
     }
 
-    public void setExecutions(List<Execution> executions) {
+    public void setExecutions(List<Log> executions) {
         this.executions = executions;
     }
 
