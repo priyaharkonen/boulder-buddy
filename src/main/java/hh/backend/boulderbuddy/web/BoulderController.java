@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import hh.backend.boulderbuddy.domain.GymRepository;
 import hh.backend.boulderbuddy.domain.BoulderRepository;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller 
