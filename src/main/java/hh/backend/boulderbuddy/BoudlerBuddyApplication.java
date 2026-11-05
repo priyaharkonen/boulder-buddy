@@ -33,7 +33,7 @@ public class BoudlerBuddyApplication {
 
 	/* Demo data for testing */
 	@Bean
-	public CommandLineRunner BoulderBuddyDemoData(GymRepository gRepository, BoulderRepository rRepository,
+	public CommandLineRunner BoulderBuddyDemoData(GymRepository gRepository, BoulderRepository bRepository,
 												  SessionRepository sRepository, LogRepository eRepository,
 												  AppUserRepository aRepository) {
 		return (args) -> {
@@ -45,10 +45,10 @@ public class BoudlerBuddyApplication {
 				new Gym("KiipeilyAreena Kalasatama"));
 
 			/* Boulders */
-			Boulder boulder1 = rRepository.save(
+			Boulder boulder1 = bRepository.save(
 				new Boulder("Blue", "Slab", "Grimps and pockets", "6C", "Current", salmis));
 			
-			Boulder boulder2 = rRepository.save(
+			Boulder boulder2 = bRepository.save(
 				new Boulder("White", "Slab", "Grimps", "6C", "Current", redi));
 
 			/* Sessions */
