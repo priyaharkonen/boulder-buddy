@@ -27,7 +27,7 @@ public class Boulder {
     private Gym gym;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "boulder")
-    private List<Log> executions;
+    private List<Log> logs;
 
     public Boulder() {}
 
@@ -72,8 +72,8 @@ public class Boulder {
         return gym;
     }
     
-    public List<Log> getExecutions() {
-        return executions;
+    public List<Log> getLogs() {
+        return logs;
     }
 
     /* Setters */
@@ -105,8 +105,8 @@ public class Boulder {
         this.gym = gym;
     }
 
-    public void setExecutions(List<Log> executions) {
-        this.executions = executions;
+    public void setLogs(List<Log> logs) {
+        this.logs = logs;
     }
 
     @Override
