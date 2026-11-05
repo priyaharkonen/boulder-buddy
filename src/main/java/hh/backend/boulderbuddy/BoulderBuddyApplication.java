@@ -23,12 +23,12 @@ import hh.backend.boulderbuddy.domain.SessionRepository;
 
 
 @SpringBootApplication
-public class BoudlerBuddyApplication {
+public class BoulderBuddyApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(BoudlerBuddyApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(BoulderBuddyApplication.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(BoudlerBuddyApplication.class, args);
+		SpringApplication.run(BoulderBuddyApplication.class, args);
 	}
 
 	/* Demo data for testing */
