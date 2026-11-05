@@ -18,8 +18,6 @@ import hh.backend.boulderbuddy.domain.Gym;
 import hh.backend.boulderbuddy.domain.GymRepository;
 import hh.backend.boulderbuddy.domain.Boulder;
 import hh.backend.boulderbuddy.domain.BoulderRepository;
-import hh.backend.boulderbuddy.domain.Session;
-import hh.backend.boulderbuddy.domain.SessionRepository;
 
 
 @SpringBootApplication
@@ -34,8 +32,7 @@ public class BoulderBuddyApplication {
 	/* Demo data for testing */
 	@Bean
 	public CommandLineRunner BoulderBuddyDemoData(GymRepository gRepository, BoulderRepository bRepository,
-												  SessionRepository sRepository, LogRepository eRepository,
-												  AppUserRepository aRepository) {
+												  LogRepository eRepository, AppUserRepository aRepository) {
 		return (args) -> {
 			log.info("save demo data");
 			/* Gyms */
@@ -50,27 +47,10 @@ public class BoulderBuddyApplication {
 			
 			Boulder boulder2 = bRepository.save(
 				new Boulder("White", "Slab", "Grimps", "6C", "Current", redi));
-
-			/* Sessions */
-			Session session1 = sRepository.save(
-					new Session(
-					"Demo sessio 1", 
-					LocalDate.of(2026, 10, 29), 
-					LocalTime.of(18, 5), 
-					LocalTime.of(1, 47), 
-					salmis));
-			
-			Session session2 = sRepository.save(
-				new Session(
-					"Demo sessio 2", 
-					LocalDate.of(2026, 11, 1), 
-					LocalTime.of(17, 15), 
-					LocalTime.of(1, 40), 
-					redi));
 			
 			/* Logs */
-			eRepository.save( new Log(2, 4, "Sent", "Moderate", boulder1, session1));
-			eRepository.save( new Log(2, 8, "Project", "Hard", boulder2, session2));
+			eRepository.save( new Log(2, 4, "Sent", "Moderate", boulder1));
+			eRepository.save( new Log(2, 8, "Project", "Hard", boulder2));
 
 			/* Users */
 			AppUser	demoUser1 = 

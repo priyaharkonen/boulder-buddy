@@ -22,9 +22,6 @@ public class Gym {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gym")
     private List<Boulder> boulders;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gym")
-    private List<Session> sessions;
-
     public Gym() {}
 
     /* Constructors */
@@ -46,10 +43,6 @@ public class Gym {
         return boulders;
     }
 
-    public List<Session> getSessions() {
-        return sessions;
-    }
-
     /* Setters */
     public void setGymId(Long gymId) {
         this.gymId = gymId;
@@ -62,12 +55,7 @@ public class Gym {
     public void setBoulders(List<Boulder> boulders) {
         this.boulders = boulders;
     }
-
-    public void setSessions(List<Session> sessions) {
-        this.sessions = sessions;
-    }
-
-
+    
     /* toString */
     @Override
     public String toString() {

@@ -21,22 +21,17 @@ public class Log {
     @ManyToOne 
     @JoinColumn(name = "boulderId")
     private Boulder boulder;
-    
-    @ManyToOne 
-    @JoinColumn(name = "sessionId")
-    private Session session;
 
     public Log() {}
 
     /* Constructors */
-    public Log(int count, int tries, String status, String effort, Boulder boulder, Session session) {
+    public Log(int count, int tries, String status, String effort, Boulder boulder) {
         super();
         this.count = count;
         this.tries = tries;
         this.status = status;
         this.effort = effort;
         this.boulder = boulder;
-        this.session = session;
     }
 
     /* Getters */
@@ -64,10 +59,6 @@ public class Log {
         return boulder;
     }
 
-    public Session getSession() {
-        return session;
-    }
-
     /* Setters */
     public void setLogId(Long log) {
         this.logId = log;
@@ -92,16 +83,12 @@ public class Log {
         this.boulder = boulder;
     }
 
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
 
     /* toString */
     @Override
     public String toString() {
         return "Log [logId=" + logId + ", count=" + count + ", tries=" + tries + ", status=" + status
-                + ", effort=" + effort + ", boulder=" + boulder + ", session=" + session + "]";
+                + ", effort=" + effort + ", boulder=" + boulder + "]";
     }
 
 
