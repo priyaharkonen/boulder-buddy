@@ -34,9 +34,10 @@ public class BoulderBuddyApplication {
 			log.info("save demo data");
 			/* Gyms */
 			Gym salmis = gRepository.save(
-				new Gym("KiipeilyAreena Salmisaari"));
+				new Gym("KiipeilyAreena Salmisaari", null, 0, 0));
 			Gym redi = gRepository.save(
-				new Gym("KiipeilyAreena Kalasatama"));
+				new Gym("KiipeilyAreena Kalasatama", null, 0, 0));
+				
 
 			/* Boulders */
 			Boulder boulder1 = bRepository.save(

@@ -16,7 +16,8 @@ public class Gym {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long gymId;
-    private String name;
+    private String company, location;
+    private double weekOpening, weekEndOpening;
 
     /* JPA Relationship */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gym")
@@ -25,18 +26,32 @@ public class Gym {
     public Gym() {}
 
     /* Constructors */
-    public Gym(String name) {
+    public Gym(String name, String location, double weekOpening, double weekEndOpening) {
         super();
-        this.name = name;
+        this.company = name;
+        this.location = location;
+        this.weekOpening = weekOpening;
+        this.weekEndOpening = weekEndOpening;
     }
 
     /* Getters */
     public Long getGymId() {
         return gymId;
     }
+    
+    public String getCompany() {
+        return company;
+    }
+    public String getLocation() {
+        return location;
+    }
 
-    public String getName() {
-        return name;
+    public double getWeekOpening() {
+        return weekOpening;
+    }
+
+    public double getWeekEndOpening() {
+        return weekEndOpening;
     }
 
     public List<Boulder> getBoulders() {
@@ -48,18 +63,31 @@ public class Gym {
         this.gymId = gymId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCompany(String name) {
+        this.company = name;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setWeekOpening(double weekOpening) {
+        this.weekOpening = weekOpening;
+    }
+
+    public void setWeekEndOpening(double weekEndOpening) {
+        this.weekEndOpening = weekEndOpening;
     }
 
     public void setBoulders(List<Boulder> boulders) {
         this.boulders = boulders;
     }
-    
-    /* toString */
+
+    /* toStrig()*/
     @Override
     public String toString() {
-        return "Gym [gymId=" + gymId + ", name=" + name + "]";
+        return "Gym [gymId=" + gymId + ", company=" + company + ", location=" + location + ", weekOpening=" + weekOpening
+                + ", weekEndOpening=" + weekEndOpening + "]";
     }    
 
 }
