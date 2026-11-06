@@ -26,9 +26,9 @@ public class Gym {
     public Gym() {}
 
     /* Constructors */
-    public Gym(String name, String location, double weekOpening, double weekEndOpening) {
+    public Gym(String company, String location, double weekOpening, double weekEndOpening) {
         super();
-        this.company = name;
+        this.company = company;
         this.location = location;
         this.weekOpening = weekOpening;
         this.weekEndOpening = weekEndOpening;
@@ -63,8 +63,8 @@ public class Gym {
         this.gymId = gymId;
     }
 
-    public void setCompany(String name) {
-        this.company = name;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public void setLocation(String location) {
