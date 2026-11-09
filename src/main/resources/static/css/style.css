@@ -71,6 +71,17 @@ p {
 
 }
 
+#secondary-nav {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 24px;
+    padding: 2px;
+    background-color: rgb(255 255 255 / 80%);
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+
+}
+
 #selected {
     background-color: #3D1773;
     color: white;

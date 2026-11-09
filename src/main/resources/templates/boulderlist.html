@@ -13,11 +13,12 @@
    
     <h1>BoulderBuddy</h1>
     
-    <div class="header-user"> 
-        <p>Welcome, <span sec:authentication="name">Username</span> !</p>
+    <div class="header-user">
+        <p>Welcome, <span sec:authentication="name">Username</span>!</p>
 
-        <form th:action="@{/logout}" method="post"></form>
-        <input type="submit" value="Sign Out" class="action-button" id="sign-out">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" class="action-button" id="sign-out">
+        </form>
     </div>
 
   </header>
@@ -28,7 +29,8 @@
         <a th:href="@{/logbook}">Logbook</a>
     </nav>
 
-    </nav>
+    <body>
+        <h1> Boulders </h1>
 
         <!-- TABLE -->
         <table class="table-boulder">
@@ -40,7 +42,7 @@
                 <th>Additional Information</th>
                 <th sec:authorize="hasAuthority('ADMIN')"> Controls</th>
                 <th sec:authorize="hasAuthority('USER')"> Log</th>
-
+    
             </tr>
             <!-- Contents -->
             <tr th:each = "boulder: ${boulders}">
@@ -60,5 +62,8 @@
         <p sec:authorize="hasAuthority('ADMIN')">
             <a href="/add" class="action-button" id="add">Add Boulder</a>  
         </p>
-</body>
+    </body>
+        
+    </body>
+
 </html>
