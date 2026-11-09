@@ -31,7 +31,7 @@ public class BoulderBuddyApplication {
 	/* Demo data for testing */
 	@Bean
 	public CommandLineRunner BoulderBuddyDemoData(GymRepository gRepository, BoulderRepository bRepository,
-												  LogRepository eRepository, AppUserRepository aRepository) {
+												  LogRepository lRepository, AppUserRepository aRepository) {
 		return (args) -> {
 			log.info("save demo data");
 			/* Gyms */
@@ -51,8 +51,8 @@ public class BoulderBuddyApplication {
 				new Boulder("White", "6C", "Slab", "Grimps", "Yes", redi));
 			
 			/* Logs */
-			eRepository.save( new Log(LocalDate.of(2026, 10, 29), 3, "Sent", "Moderate", boulder1));
-			eRepository.save( new Log(LocalDate.of(2026, 11, 01), 6, "Project", "Hard", boulder2));
+			lRepository.save( new Log(LocalDate.of(2026, 10, 29), 3, "Sent", "Moderate", boulder1));
+			lRepository.save( new Log(LocalDate.of(2026, 11, 01), 6, "Project", "Hard", boulder2));
 
 			/* Users */
 			AppUser	demoUser1 = 

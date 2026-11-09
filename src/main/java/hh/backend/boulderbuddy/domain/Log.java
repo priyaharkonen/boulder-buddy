@@ -17,7 +17,7 @@ public class Log {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long logId;
     private LocalDate date;
-    private int count, tries;
+    private int tryCount;
     private String status, effort;
 
     /* JPA Relationships */
@@ -28,10 +28,10 @@ public class Log {
     public Log() {}
 
     /* Constructors */
-    public Log(LocalDate date, int tries, String status, String effort, Boulder boulder) {
+    public Log(LocalDate date, int tryCount, String status, String effort, Boulder boulder) {
         super();
         this.date = date;
-        this.tries = tries;
+        this.tryCount = tryCount;
         this.status = status;
         this.effort = effort;
         this.boulder = boulder;
@@ -46,8 +46,8 @@ public class Log {
         return date;
     }
 
-    public int getTries() {
-        return tries;
+    public int getTryCount() {
+        return tryCount;
     }
 
     public String getStatus() {
@@ -71,8 +71,8 @@ public class Log {
         this.date = date;
     }
 
-    public void setTries(int tries) {
-        this.tries = tries;
+    public void setTryCount(int tryCount) {
+        this.tryCount = tryCount;
     }
 
     public void setStatus(String status) {
@@ -89,7 +89,7 @@ public class Log {
 
     @Override
     public String toString() {
-        return "Log [logId=" + logId + ", date=" + date + ", tries=" + tries + ", status=" + status
+        return "Log [logId=" + logId + ", date=" + date + ", tryCount=" + tryCount + ", status=" + status
                 + ", effort=" + effort + "]";
     }
 

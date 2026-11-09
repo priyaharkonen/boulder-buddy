@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Boulderlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+   <div class="container">
+	<div class="col-md-4">
+		<h1>Add Boulder</h1>
+	</div>
+    <!-- FORM -->
+     <input type="text" th:field="">
+
+    <form th:object="${boulder}" th:action="@{save}" action="#" method="post">
+        
+        <label for="boulder">Boulder</label>
+        <input type="text" th:field="*{color}">
+        <input type="text" th:field="*{grade}">
+
+        <!-- Dropdown list of Gyms -->
+        <div class="form-field"></div>
+        <label for="kiipeilyAreena">KiipeilyAreena</label>
+        
+        <select id="kiipeilyAreena" th:field="*{gym}" class="form-control">
+            <option th:each="gym: ${gyms}" 
+                th:value="${gym.gymId}" 
+                th:text="${gym.company}">
+            </option>
+        </select>
+
+        </div>
+        <input type="text" th:field="*{boulder.gym.company}">
+        <input type="text" th:field="*{boulder.gym.location}">
+
+        <label for="status">Status</label>
+        <input type="text" th:field="*{boulder.status}">
+
+        <label for="additionalInfo">Additional Information</label>
+        <input type="text" th:field="*{boulder.wall}">
+        <input type="text" th:field="*{boulder.holds}">
+
+    </form>
+    
+</body>
+</html>
