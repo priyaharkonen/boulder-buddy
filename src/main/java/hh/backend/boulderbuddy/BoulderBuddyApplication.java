@@ -44,11 +44,11 @@ public class BoulderBuddyApplication {
 			/* Boulders */
 			Boulder boulder1 = bRepository.save(
 				/* new Boulder("Blue", "Slab", "Grimps and pockets", "6C", "Current", salmis)); */
-				new Boulder("Blue", "6C", "Slab", "Grimps and pockets", "Yes", salmis));
+				new Boulder("Blue", "6C", "Slab", "Grimps and pockets", "Available", salmis));
 			
 			Boulder boulder2 = bRepository.save(
 				/* new Boulder("White", "Slab", "Grimps", "6C", "Current", redi)); */
-				new Boulder("White", "6C", "Slab", "Grimps", "Yes", redi));
+				new Boulder("White", "6C", "Slab", "Grimps", "Available", redi));
 			
 			/* Logs */
 			lRepository.save( new Log(LocalDate.of(2026, 10, 29), 3, "Sent", "Moderate", boulder1));
