@@ -1,0 +1,146 @@
+body {
+    background-color: rgb(61, 23, 115);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    font-size: 22px;
+    padding: 0 24px;
+    margin: 0;   
+}
+
+h1 {
+    font-size: 24px;
+}
+
+/* tr {
+    font-size: 20px;
+
+} */
+
+p {
+    font-size: 18px;
+}
+
+.header {
+    background-color: rgb(61, 23, 115);
+    margin-top: 15px;
+    text-decoration-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.header-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+}
+
+.header-user p,
+.header-user form {
+    margin: 0;
+}
+
+.navigation {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 24px;
+    padding: 2px;
+    background-color: rgb(255 255 255 / 80%);
+    border-radius: 14px;
+
+}
+
+.navigation a {
+    flex: 1;
+    padding: 12px 8px;
+    border-radius: 12px;
+    color: #3D1773;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.navigation a:hover {
+    background-color: #3D1773;
+    color: white;
+    text-decoration: none;
+
+}
+
+#selected {
+    background-color: #3D1773;
+    color: white;
+    text-decoration: none;
+}
+
+.table-boulder {
+    border-color: rgb(255 255 255 / 80%);
+    fill: rgb(255 255 255 / 80%);
+    width: 100%;
+
+}
+
+th {
+    background-color: #3D1773;
+    color: white;
+    border:1px solid white;
+    text-align: center;
+    font-size: 20px;
+    padding: 8px;
+    
+}
+
+td {
+    background-color: rgb(255 255 255 / 80%);
+    color: #3D1773;
+    border:1px solid #3D1773;
+    font-size: 18px;
+    padding: 8px;
+}
+
+
+
+.button {
+    font-size: 14px;
+    background-color:white;
+    color: #3D1773;
+    text-decoration: none;
+    border-radius: 12px;
+    margin: 2px;
+    padding: 4px;
+}
+
+.action-button {
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 12px;
+    margin: 4px;
+    text-decoration: none;
+    text-align: center;
+
+}
+#sign-out{
+    background-color:white;
+    color: #3D1773;
+    font-size: 14px;
+    margin: 2px;
+    padding: 4px;
+    
+}
+
+#delete {
+    background-color:#CC7087;
+    color: #3D1773;
+    
+}
+
+#add {
+    background-color:#7DCC95;
+    color: #3D1773;
+
+
+}
