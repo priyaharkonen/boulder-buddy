@@ -1,5 +1,7 @@
 package hh.backend.boulderbuddy;
 
+import java.time.LocalDate;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -47,8 +49,8 @@ public class BoulderBuddyApplication {
 				new Boulder("White", "Slab", "Grimps", "6C", "Current", redi));
 			
 			/* Logs */
-			eRepository.save( new Log(2, 4, "Sent", "Moderate", boulder1));
-			eRepository.save( new Log(2, 8, "Project", "Hard", boulder2));
+			eRepository.save( new Log(LocalDate.of(2026, 10, 29), 3, "Sent", "Moderate", boulder1));
+			eRepository.save( new Log(LocalDate.of(2026, 11, 01), 6, "Project", "Hard", boulder2));
 
 			/* Users */
 			AppUser	demoUser1 = 

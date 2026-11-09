@@ -1,5 +1,7 @@
 package hh.backend.boulderbuddy.domain;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +16,7 @@ public class Log {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long logId;
+    private LocalDate date;
     private int count, tries;
     private String status, effort;
 
@@ -25,9 +28,9 @@ public class Log {
     public Log() {}
 
     /* Constructors */
-    public Log(int count, int tries, String status, String effort, Boulder boulder) {
+    public Log(LocalDate date, int tries, String status, String effort, Boulder boulder) {
         super();
-        this.count = count;
+        this.date = date;
         this.tries = tries;
         this.status = status;
         this.effort = effort;
@@ -39,8 +42,8 @@ public class Log {
         return logId;
     }
 
-    public int getCount() {
-        return count;
+    public LocalDate getDate() {
+        return date;
     }
 
     public int getTries() {
@@ -64,8 +67,8 @@ public class Log {
         this.logId = log;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public void setTries(int tries) {
@@ -84,11 +87,10 @@ public class Log {
     }
 
 
-    /* toString */
     @Override
     public String toString() {
-        return "Log [logId=" + logId + ", count=" + count + ", tries=" + tries + ", status=" + status
-                + ", effort=" + effort + ", boulder=" + boulder + "]";
+        return "Log [logId=" + logId + ", date=" + date + ", tries=" + tries + ", status=" + status
+                + ", effort=" + effort + "]";
     }
 
 
