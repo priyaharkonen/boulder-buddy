@@ -16,8 +16,7 @@ public class Gym {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long gymId;
-    private String company, location;
-    private double weekOpening, weekEndOpening;
+    private String company, location, weekOpening, weekEndOpening;
 
     /* JPA Relationship */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gym")
@@ -26,7 +25,7 @@ public class Gym {
     public Gym() {}
 
     /* Constructors */
-    public Gym(String company, String location, double weekOpening, double weekEndOpening) {
+    public Gym(String company, String location, String weekOpening, String weekEndOpening) {
         super();
         this.company = company;
         this.location = location;
@@ -46,11 +45,11 @@ public class Gym {
         return location;
     }
 
-    public double getWeekOpening() {
+    public String getWeekOpening() {
         return weekOpening;
     }
 
-    public double getWeekEndOpening() {
+    public String getWeekEndOpening() {
         return weekEndOpening;
     }
 
@@ -71,11 +70,11 @@ public class Gym {
         this.location = location;
     }
 
-    public void setWeekOpening(double weekOpening) {
+    public void setWeekOpening(String weekOpening) {
         this.weekOpening = weekOpening;
     }
 
-    public void setWeekEndOpening(double weekEndOpening) {
+    public void setWeekEndOpening(String weekEndOpening) {
         this.weekEndOpening = weekEndOpening;
     }
 
