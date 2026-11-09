@@ -19,7 +19,7 @@ public class Boulder {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long boulderId;
-    private String color, wall, holds, grade, status;
+    private String color, grade, wall, holds, status;
 
     /* JPA Relationships */
     @ManyToOne
@@ -32,12 +32,12 @@ public class Boulder {
     public Boulder() {}
 
     /* Constructors */
-    public Boulder(String color, String wall, String holds, String grade, String status, Gym gym) {
+    public Boulder(String color, String grade, String wall, String holds, String status, Gym gym) {
         super();
         this.color = color;
+        this.grade = grade;
         this.wall = wall;
         this.holds = holds;
-        this.grade = grade;
         this.status = status;
         this.gym = gym;
     }
@@ -51,6 +51,10 @@ public class Boulder {
     public String getColor() {
         return color;
     }
+    
+    public String getGrade() {
+        return grade;
+    }
 
     public String getWall() {
         return wall;
@@ -60,9 +64,6 @@ public class Boulder {
         return holds;
     }
 
-    public String getGrade() {
-        return grade;
-    }
 
     public String getStatus() {
         return status;
@@ -84,6 +85,10 @@ public class Boulder {
     public void setColor(String color) {
         this.color = color;
     }
+    
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
 
     public void setWall(String wall) {
         this.wall = wall;
@@ -93,9 +98,6 @@ public class Boulder {
         this.holds = holds;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
 
     public void setStatus(String status) {
         this.status = status;
@@ -113,11 +115,11 @@ public class Boulder {
     public String toString() {
        
         if(this.gym != null)
-            return "Boulder [boulderId=" + boulderId + ", color=" + color + ", wall=" + wall + ", holds=" + holds + ", grade="
-                + grade + ", status=" + status + ", gym=" + gym + "]";
+            return "Boulder [boulderId=" + boulderId + ", color=" + color + ", grade="
+                + grade + ", wall=" + wall + ", holds=" + holds + ", status=" + status + ", gym=" + gym + "]";
         else
-            return "Boulder [boulderId=" + boulderId + ", color=" + color + ", wall=" + wall + ", holds=" + holds + ", grade="
-                + grade + ", status=" + status + "]";
+            return "Boulder [boulderId=" + boulderId + ", color=" + color + ", grade=" + grade + ", wall="
+             + wall + ", holds=" + holds +  ", status=" + status + "]";
     }
 
 
