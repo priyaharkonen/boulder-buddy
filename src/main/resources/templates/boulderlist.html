@@ -4,25 +4,25 @@
 <head>
     <title>Boulderlist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 
 <body>
-  
-    <header class="header"> 
-    
+
+    <header class="header">
+
         <h1>BoulderBuddy</h1>
-        
+
         <div class="header-user">
             <p>Welcome, <span sec:authentication="name">Username</span>!</p>
-    
+
             <form th:action="@{/logout}" method="post">
                 <input type="submit" value="Sign Out" class="action-button" id="sign-out">
             </form>
         </div>
-    
-  </header>
+
+    </header>
 
     <nav class="navigation">
         <a th:href="@{/home}">Home</a>
@@ -37,7 +37,7 @@
 
         <!-- TABLE -->
         <table class="table-boulder">
-            
+
             <!-- table-columns -->
             <tr>
                 <th>Boulder</th>
@@ -46,10 +46,10 @@
                 <th>Additional Information</th>
                 <th sec:authorize="hasAuthority('ADMIN')"> Controls</th>
                 <th sec:authorize="hasAuthority('USER')"> Log</th>
-    
+
             </tr>
             <!-- table-contents -->
-            <tr th:each = "boulder: ${boulders}">
+            <tr th:each="boulder: ${boulders}">
                 <td th:text="${boulder.color} + ' ' + ${boulder.grade}"></td>
                 <td th:text="${boulder.gym.company} + ' ' + ${boulder.gym.location}"></td>
                 <td th:text="${boulder.status}"></td>
@@ -58,17 +58,15 @@
                     Holds: <span th:text="${boulder.holds}"></span>
                 </td>
 
-                    <td sec:authorize="hasAuthority('ADMIN')">
-                       <a th:href="@{/delete/{id}(id=${boulder.boulderId})}"
-                          class="action-button" id="delete">Remove</a>
-                    </td>        
-            </tr>     
+                <td sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${boulder.boulderId})}" class="action-button" id="delete">Remove</a>
+                </td>
+            </tr>
         </table>
-        
-        <a sec:authorize="hasAuthority('ADMIN')"
-           th:href="@{/add}"
-           class="action-button" id="add">Add Boulder</a> 
+
+        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/add}" class="action-button" id="add">Add Boulder</a>
     </div>
-    
+
 </body>
+
 </html>
