@@ -11,7 +11,7 @@
 <body>
   <header class="header">
    
-    <h1>Add Boulder</h1>
+    <h1>BoulderBuddy</h1>
     
     <div class="header-user">
         <p>Welcome, <span sec:authentication="name">Username</span>!</p>
@@ -28,36 +28,38 @@
         <a th:href="@{/boulders}" id="selected">Boulders</a>
         <a th:href="@{/logbook}">Logbook</a>
     </nav>
-    <!-- FORM -->
-     <input type="text" th:field="">
 
-    <form th:object="${boulder}" th:action="@{save}" action="#" method="post">
+    <h1 class="page-title"> Add Boulder</h1>
+    <!-- FORM -->
+
+    <form th:object="${boulder}" th:action="@{/save}" method="post">
         
-        <label for="boulder">Boulder</label>
-        <input type="text" th:field="*{color}">
-        <input type="text" th:field="*{grade}">
+        <label for="color">Color</label>
+        <input type="text" th:field="*{color}" placeholder="Color">
+        <label for="grade">Grade</label>
+        <input type="text" th:field="*{grade}" placeholder="Grade">
 
         <!-- Dropdown list of Gyms -->
-        <div class="form-field"></div>
-        <label for="kiipeilyAreena">KiipeilyAreena</label>
+        <div style="clear: both; display: block; height: 10px;">
+        <label for="gymList">Gym</label>
         
-        <select id="kiipeilyAreena" th:field="*{gym}" class="form-control">
+        <select id="gymList" th:field="*{gym}" class="form-control" required>
             <option th:each="gym: ${gyms}" 
                 th:value="${gym.gymId}" 
-                th:text="${gym.company}">
+                th:text="${gym.company} + ' ' + ${gym.location}" >
             </option>
         </select>
-
         </div>
-        <input type="text" th:field="*{boulder.gym.company}">
-        <input type="text" th:field="*{boulder.gym.location}">
-
+        
         <label for="status">Status</label>
-        <input type="text" th:field="*{boulder.status}">
-
-        <label for="additionalInfo">Additional Information</label>
-        <input type="text" th:field="*{boulder.wall}">
-        <input type="text" th:field="*{boulder.holds}">
+        <input type="text" th:field="*{status}">
+        
+        <label for="holds">Holds</label>
+        <input type="text" th:field="*{holds}">
+        <label for="wall">Wall type</label>
+        <input type="text" th:field="*{wall}">
+    
+    <button type="submit" class="action-button" id="submit">Save Boulder</button>
 
     </form>
     

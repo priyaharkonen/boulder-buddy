@@ -9,19 +9,21 @@
 </head>
 
 <body>
-  <header class="header">
-   
-    <h1>BoulderBuddy</h1>
+  
+    <header class="header"> 
     
-    <div class="header-user">
-        <p>Welcome, <span sec:authentication="name">Username</span>!</p>
-
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out" class="action-button" id="sign-out">
-        </form>
-    </div>
-
+        <h1>BoulderBuddy</h1>
+        
+        <div class="header-user">
+            <p>Welcome, <span sec:authentication="name">Username</span>!</p>
+    
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="action-button" id="sign-out">
+            </form>
+        </div>
+    
   </header>
+
     <nav class="navigation">
         <a th:href="@{/home}">Home</a>
         <a th:href="@{/gyms}">Gyms</a>
@@ -29,12 +31,14 @@
         <a th:href="@{/logbook}">Logbook</a>
     </nav>
 
-    <body>
-        <h1> Boulders </h1>
+    <div>
+
+        <h1 class="page-title"> Boulders </h1>
 
         <!-- TABLE -->
         <table class="table-boulder">
-            <!-- Columns -->
+            
+            <!-- table-columns -->
             <tr>
                 <th>Boulder</th>
                 <th>Gym</th>
@@ -44,7 +48,7 @@
                 <th sec:authorize="hasAuthority('USER')"> Log</th>
     
             </tr>
-            <!-- Contents -->
+            <!-- table-contents -->
             <tr th:each = "boulder: ${boulders}">
                 <td th:text="${boulder.color} + ' ' + ${boulder.grade}"></td>
                 <td th:text="${boulder.gym.company} + ' ' + ${boulder.gym.location}"></td>
@@ -53,17 +57,21 @@
                     Wall type: <span th:text="${boulder.wall}"></span><br>
                     Holds: <span th:text="${boulder.holds}"></span>
                 </td>
+
                     <td sec:authorize="hasAuthority('ADMIN')">
                        <a th:href="@{/delete/{id}(id=${boulder.boulderId})}"
                           class="action-button" id="delete">Remove</a>
                     </td>        
             </tr>     
         </table>
-        <p sec:authorize="hasAuthority('ADMIN')">
-            <a href="/add" class="action-button" id="add">Add Boulder</a>  
-        </p>
-    </body>
         
-    </body>
+        <a sec:authorize="hasAuthority('ADMIN')"
+           th:href="@{/add}"
+           class="action-button" id="add">Add Boulder</a>
+        <!-- <p sec:authorize="hasAuthority('ADMIN')">
+            <a th:href="@{/add}" class="action-button" id="add">Add Boulder</a></p> -->
+        
+    </div>
+</body>
 
 </html>
