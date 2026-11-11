@@ -66,9 +66,17 @@ public class BoulderBuddyApplication {
 					"$2a$12$DusC49YYlYkgmBKRirA.UO7.vpYVndpF4iaLTpMQKJZpQV4g.SJ5O", /* demouser */
 					"user.demo@boulderbuddy.com", 
 					"USER");
+			
+			AppUser demoUser3 = 
+				new AppUser(
+					"kipa", 
+					"$2a$12$t6mSLIj89VBzTyyG/dEJa.6PzOagkoLl/PaB4KauFTjL99evGPfrq", /* kirsihar59 */
+					"kipa.demouser@boulderbuddy.com", 
+					"USER");
 				
 			aRepository.save(demoUser1);
 			aRepository.save(demoUser2);
+			aRepository.save(demoUser3);
 
 		};
 	}
