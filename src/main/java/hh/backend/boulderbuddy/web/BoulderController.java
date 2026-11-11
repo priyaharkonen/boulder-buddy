@@ -55,6 +55,7 @@ public class BoulderController {
         model.addAttribute("boulder", new Boulder());
         model.addAttribute("gyms", gymRepository.findAll());
         return "addboulder"; /* HTML */
+        /* return "add"; /* HTML */ 
     }
 
     /* Save */

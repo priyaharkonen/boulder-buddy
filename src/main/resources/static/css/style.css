@@ -22,6 +22,10 @@ h2 {
 .page-title {
     font-size: 32px;
 }
+.form-title {
+    margin-top: 8px;
+    font-size: 20px;
+}
 
 p, td {
     line-height: 1.5;
@@ -181,9 +185,20 @@ a#add {
 .form .form-section {
     background-color: #3D1773;
     color: white;
-    padding: 8px;
+    padding: 6px 8px 20px;
     border: 2px solid white;
     border-radius: 8px;
+}
+
+#secondary {
+    margin-top: 12px;
+}
+
+#secondary::before {
+    content: "";
+    display: block;
+    margin: 0 12px;
+    border-top: 1px solid white;
 }
 
 .form .form-row {
@@ -196,6 +211,7 @@ a#add {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-bottom: 8px;
 }
 
 .form label {

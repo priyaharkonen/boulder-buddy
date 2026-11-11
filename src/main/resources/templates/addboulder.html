@@ -22,6 +22,7 @@
         </div>
 
     </header>
+
     <nav class="navigation">
         <a th:href="@{/home}">Home</a>
         <a th:href="@{/gyms}">Gyms</a>
@@ -29,38 +30,72 @@
         <a th:href="@{/logbook}">Logbook</a>
     </nav>
 
-    <h1 class="page-title"> Add Boulder</h1>
-    <!-- FORM -->
+    <div>
+        <h1 class="page-title"> Add Boulder</h1>
 
-    <form th:object="${boulder}" th:action="@{/save}" method="post">
+        <!-- FORM -->
+        <form th:object="${boulder}" th:action="@{/save}" method="post" class="form">
 
-        <label for="color">Color</label>
-        <input type="text" th:field="*{color}" placeholder="Color">
-        <label for="grade">Grade</label>
-        <input type="text" th:field="*{grade}" placeholder="Grade">
+            <div class="form-section">
+                <h2 class="form-title">Route Details</h2>
 
-        <!-- Dropdown list of Gyms -->
-        <div style="clear: both; display: block; height: 10px;">
-            <label for="gymList">Gym</label>
+                <div class="form-row">
 
-            <select id="gymList" th:field="*{gym}" class="form-control" required>
-                <option th:each="gym: ${gyms}" th:value="${gym.gymId}" th:text="${gym.company} + ' ' + ${gym.location}">
-                </option>
-            </select>
-        </div>
+                    <div class="form-field">
+                        <label for="color">Color</label>
+                        <input type="text" th:field="*{color}" placeholder="Color">
+                    </div>
 
-        <label for="status">Status</label>
-        <input type="text" th:field="*{status}">
+                    <div class="form-field">
+                        <label for="grade">Grade</label>
+                        <input type="text" th:field="*{grade}" placeholder="Grade">
+                    </div>
 
-        <label for="holds">Holds</label>
-        <input type="text" th:field="*{holds}">
-        <label for="wall">Wall type</label>
-        <input type="text" th:field="*{wall}">
+                    <div class="form-field">
+                        <label for="status">Status</label>
+                        <input type="text" th:field="*{status}">
+                    </div>
+                </div>
 
-        <button type="submit" class="action-button" id="submit">Save Boulder</button>
+                <div id="secondary">
+                    <h3>Additonal details</h3>
 
-    </form>
+                    <div class="form-row">
 
+                        <div class="form-field">
+                            <label for="wall">Wall type</label>
+                            <input type="text" th:field="*{wall}">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="holds">Holds</label>
+                            <input type="text" th:field="*{holds}">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Gym Details</h2>
+
+                <div class="form-field">
+
+                    <label for="gymList">Gym</label>
+                    <select id="gymList" th:field="*{gym}" class="form-control" required>
+                        <option th:each="gym: ${gyms}" th:value="${gym.gymId}"
+                            th:text="${gym.company} + ' ' + ${gym.location}">
+                        </option>
+                    </select>
+
+                </div>
+            </div>
+
+            <button type="submit" class="action-button" id="submit">Save Boulder</button>
+        </form>
+
+    </div>
 </body>
 
 </html>

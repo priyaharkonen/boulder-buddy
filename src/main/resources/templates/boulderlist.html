@@ -40,10 +40,11 @@
 
             <!-- table-columns -->
             <tr>
-                <th>Boulder</th>
+                <th>Route</th>
                 <th>Gym</th>
                 <th>Status</th>
-                <th>Additional Information</th>
+                <th>Wall type</th>
+                <th>Holds</th>
                 <th sec:authorize="hasAuthority('ADMIN')"> Controls</th>
                 <th sec:authorize="hasAuthority('USER')"> Log</th>
 
@@ -53,11 +54,8 @@
                 <td th:text="${boulder.color} + ' ' + ${boulder.grade}"></td>
                 <td th:text="${boulder.gym.company} + ' ' + ${boulder.gym.location}"></td>
                 <td th:text="${boulder.status}"></td>
-                <td>
-                    Wall type: <span th:text="${boulder.wall}"></span><br>
-                    Holds: <span th:text="${boulder.holds}"></span>
-                </td>
-
+                <td th:text="${boulder.wall}"></td>
+                <td th:text="${boulder.holds}"></td>
                 <td sec:authorize="hasAuthority('ADMIN')">
                     <a th:href="@{/delete/{id}(id=${boulder.boulderId})}" class="action-button" id="delete">Remove</a>
                 </td>
