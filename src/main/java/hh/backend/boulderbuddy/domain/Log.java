@@ -18,7 +18,7 @@ public class Log {
     private Long logId;
     private LocalDate date;
     private int tryCount;
-    private String status, effort;
+    private String status, effort, notes;
 
     /* JPA Relationships */
     @ManyToOne 
@@ -28,12 +28,13 @@ public class Log {
     public Log() {}
 
     /* Constructors */
-    public Log(LocalDate date, int tryCount, String status, String effort, Boulder boulder) {
+    public Log(LocalDate date, int tryCount, String status, String effort, String notes, Boulder boulder) {
         super();
         this.date = date;
         this.tryCount = tryCount;
         this.status = status;
         this.effort = effort;
+        this.notes = notes;
         this.boulder = boulder;
     }
 
@@ -57,10 +58,15 @@ public class Log {
     public String getEffort() {
         return effort;
     }
+    
+    public String getNotes() {
+        return notes;
+    }
 
     public Boulder getBoulder() {
         return boulder;
     }
+
 
     /* Setters */
     public void setLogId(Long log) {
@@ -82,15 +88,17 @@ public class Log {
     public void setEffort(String effort) {
         this.effort = effort;
     }
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
     public void setBoulder(Boulder boulder) {
         this.boulder = boulder;
     }
 
-
     @Override
     public String toString() {
-        return "Log [logId=" + logId + ", date=" + date + ", tryCount=" + tryCount + ", status=" + status
-                + ", effort=" + effort + "]";
+        return "Log [logId=" + logId + ", date=" + date + ", tryCount=" + tryCount + ", status=" + status + ", effort="
+                + effort + ", notes=" + notes + "]";
     }
 
 

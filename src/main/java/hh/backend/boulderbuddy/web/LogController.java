@@ -27,6 +27,38 @@ public class LogController {
    
     }
     
+    /* All */
+    @GetMapping("/logbook") /* Request endpoint */
+    public String boulderList(Model model) {
+        model.addAttribute("logs", logRepository.findAll());
+        return "logbook"; /* HTML */
+    }
+
+    /* Log */
+    @GetMapping("/addlog") /* Request endpoint */
+    @PreAuthorize("hasAuthority('USER')") /* Authorized for 'USER' -role */
+    public String addBoulder(Model model) {
+        model.addAttribute("log", new Log());
+        model.addAttribute("boulders", boulderRepository.findAll());
+        return "addlog"; /* HTML */
+        /* return "add"; /* HTML */ 
+    }
+
+    @PostMapping("/savelog")
+    @PreAuthorize("hasAuthority('USER')") /* Authorized for 'USER' -role */
+    public String saveLog(Log log) {
+        logRepository.save(log);
+        return "redirect:/logbook";
+    }
+
+    /* @GetMapping("delete/{id}") */
+    @GetMapping("deleteLog/{id}")
+    @PreAuthorize("hasAuthority('USER')")  /* Authorized for 'USER' -role */
+    public String deleteLog(@PathVariable("id") Long logId, Model model) {
+        logRepository.deleteById(logId);
+        return "redirect:/logbook";
+    }  
+
     
 }
 

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Boulderlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+
+    <header class="header">
+
+        <h1>BoulderBuddy</h1>
+
+        <div class="header-user">
+            <p>Welcome, <span sec:authentication="name">Username</span>!</p>
+
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="action-button" id="sign-out">
+            </form>
+        </div>
+
+    </header>
+
+    <nav class="navigation">
+        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/gyms}">Gyms</a>
+        <a th:href="@{/boulders}">Boulders</a>
+        <a th:href="@{/logbook}" id="selected">Logbook</a>
+    </nav>
+
+    <!-- ** ADMIN VIEW ** -->
+
+    <div>
+
+        <h1 class="page-title"> Log Boulder</h1>
+
+        <!-- FORM -->
+        <form th:object="${log}" th:action="@{/savelog}" method="post" class="form">
+
+            <div class="form-section">
+                <h2 class="section-title">Choose Boulder</h2>
+
+                <div class="form-row">
+                    
+                    <div class="form-field">
+                        <label for="boulderList">Boulder</label>
+                        <select id="boulderList" th:field="*{boulder}" class="form-control" required>
+                        <option value="">Select a boulder</option>
+                        <option th:each="boulder: ${boulders}" th:value="${boulder.boulderId}"
+                                th:text=" ${boulder.color} + ' ' + ${boulder.grade}+' at '+ ${boulder.gym.company} + ' ' + ${boulder.gym.location}">
+                        </option>
+                    </select>
+                    </div>
+                </div>
+
+                <div id="secondary">
+                    <h2 class="section-title">Log Details</h2>
+
+                    <div class="form-row">
+
+                        <div class="form-field">
+                            <label for="date">Date</label>
+                            <input type="date" th:field="*{date}" placeholder="e.g 29.11.2026">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="attempts">Attempts</label>
+                            <input type="number" th:field="*{tryCount}" placeholder="e.g 3">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="status">Status</label>
+                            <input type="text" th:field="*{status}" placeholder="e.g Projecting">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="effort">Effort</label>
+                            <input type="text" th:field="*{effort}" placeholder="e.g Hard">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="notes">Notes</label>
+                            <input type="text" th:field="*{notes}" placeholder="Additional remarks">
+                        </div>
+                    </div>
+                </div>
+                <div class="button-row">
+                    <button type="submit" class="action-button" id="submit">Save</button>
+                    <a th:href="@{/boulders}" class="action-button" id="back">&larr; Back</a>
+                </div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

@@ -32,7 +32,6 @@
 
     <div>
         <h1 class="page-title"> Add Boulder</h1>
-
         <!-- FORM -->
         <form th:object="${boulder}" th:action="@{/save}" method="post" class="form">
 
@@ -43,17 +42,17 @@
 
                     <div class="form-field">
                         <label for="color">Color</label>
-                        <input type="text" th:field="*{color}" placeholder="Color">
+                        <input type="text" th:field="*{color}" placeholder="e.g Blue">
                     </div>
 
                     <div class="form-field">
                         <label for="grade">Grade</label>
-                        <input type="text" th:field="*{grade}" placeholder="Grade">
+                        <input type="text" th:field="*{grade}" placeholder="e.g 6C+">
                     </div>
 
                     <div class="form-field">
                         <label for="status">Status</label>
-                        <input type="text" th:field="*{status}">
+                        <input type="text" th:field="*{status}" placeholder=" e.g Available">
                     </div>
                 </div>
 
@@ -64,12 +63,12 @@
 
                         <div class="form-field">
                             <label for="wall">Wall type</label>
-                            <input type="text" th:field="*{wall}">
+                            <input type="text" th:field="*{wall}" placeholder="e.g Slab">
                         </div>
 
                         <div class="form-field">
                             <label for="holds">Holds</label>
-                            <input type="text" th:field="*{holds}">
+                            <input type="text" th:field="*{holds}" placeholder="e.g Crimps and Pockets">
                         </div>
 
                     </div>
@@ -84,6 +83,7 @@
 
                     <label for="gymList">Gym</label>
                     <select id="gymList" th:field="*{gym}" class="form-control" required>
+                        <option value="">Select a gym</option>
                         <option th:each="gym: ${gyms}" th:value="${gym.gymId}"
                             th:text="${gym.company} + ' ' + ${gym.location}">
                         </option>
@@ -91,10 +91,12 @@
 
                 </div>
             </div>
+            <div class="button-row">
+                <button type="submit" class="action-button" id="submit">Save</button>
+                <a th:href="@{/boulders}" class="action-button" id="back">&larr; Back</a>
+            </div>
 
-            <button type="submit" class="action-button" id="submit">Save Boulder</button>
         </form>
-
     </div>
 </body>
 

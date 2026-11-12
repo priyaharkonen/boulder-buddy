@@ -57,6 +57,14 @@ public class BoulderController {
         return "addboulder"; /* HTML */
         /* return "add"; /* HTML */ 
     }
+    // /* Edit */
+    // @GetMapping("edit/{id}")
+    // @PreAuthorize("hasAuthority('ADMIN')")  /* Authorized for 'ADMIN' -role */
+    // public String editBoulder(@PathVariable("id") Long boulderId, Model model) {
+    //     model.addAttribute("boulder", boulderRepository.findById(boulderId));
+    //     model.addAttribute("gyms", gymRepository.findAll());
+    //     return "/edit";
+    // }  
 
     /* Save */
     @PostMapping("/save")

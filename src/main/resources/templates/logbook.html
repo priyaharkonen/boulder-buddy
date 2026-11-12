@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Boulderlist</title>
@@ -32,8 +33,39 @@
 
     <div>
 
-        <!-- INSERT YOUR CODE HERE -->
+        <h1 class="page-title"> Logbook </h1>
 
+        <!-- TABLE -->
+        <table class="table-boulder">
+
+            <!-- table-columns -->
+            <tr>
+                <th>Boulder</th>
+                <th>Date</th>
+                <th>Attempts</th>
+                <th>Status</th>
+                <th>Effort</th>
+                <th>Notes</th>
+                <th>Options</th>
+            </tr>
+            <!-- table-contents -->
+            <tr th:each="log: ${logs}">
+                <td th:text="${log.boulder.color} + ' ' + ${log.boulder.grade}"></td>
+                <td th:text="${log.date}"></td>
+                <td th:text="${log.tryCount}"></td>
+                <td th:text="${log.status}"></td>
+                <td th:text="${log.effort}"></td>
+                <td th:text="${log.notes}"></td>
+                
+                <td id="options">
+                    <a th:href="@{/edit/{id}(id=${log.logId})}" class="action-button" id="edit">&#9998; Edit</a>
+                    <a th:href="@{/delete/{id}(id=${log.logId})}" class="action-button" id="delete">&#10008; Remove</a>
+                </td>
+            </tr>
+        
+        </table>
+
+        <a th:href="@{/boulders}" class="action-button" id="back">&larr; View Boulders</a>
     </div>
 
 </body>

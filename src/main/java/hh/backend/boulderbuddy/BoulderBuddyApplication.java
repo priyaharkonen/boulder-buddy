@@ -49,8 +49,8 @@ public class BoulderBuddyApplication {
 				new Boulder("White", "6C", "Slab", "Crimps", "Available", redi));
 			
 			/* Logs */
-			lRepository.save( new Log(LocalDate.of(2026, 10, 29), 3, "Sent", "Moderate", boulder1));
-			lRepository.save( new Log(LocalDate.of(2026, 11, 01), 6, "Project", "Hard", boulder2));
+			lRepository.save( new Log(LocalDate.of(2026, 10, 29), 3, "Sent", "Moderate", "Positiivinen yllätys kun sai sendattua session loppuun, kiva reitti",boulder1));
+			lRepository.save(new Log(LocalDate.of(2026, 11, 01), 6, "Projecting", "Hard", "First move seems impossible", boulder2));
 
 			/* Users */
 			AppUser	demoUser1 = 
