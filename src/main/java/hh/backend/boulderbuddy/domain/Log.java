@@ -21,14 +21,19 @@ public class Log {
     private String status, effort, notes;
 
     /* JPA Relationships */
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private AppUser user;
+
     @ManyToOne 
     @JoinColumn(name = "boulderId")
     private Boulder boulder;
 
+
     public Log() {}
 
     /* Constructors */
-    public Log(LocalDate date, int tryCount, String status, String effort, String notes, Boulder boulder) {
+    public Log(LocalDate date, int tryCount, String status, String effort, String notes, AppUser user, Boulder boulder) {
         super();
         this.date = date;
         this.tryCount = tryCount;
@@ -36,6 +41,7 @@ public class Log {
         this.effort = effort;
         this.notes = notes;
         this.boulder = boulder;
+        this.user = user;
     }
 
     /* Getters */
@@ -63,6 +69,10 @@ public class Log {
         return notes;
     }
 
+    public AppUser getUser() {
+        return user;
+    }
+
     public Boulder getBoulder() {
         return boulder;
     }
@@ -88,9 +98,15 @@ public class Log {
     public void setEffort(String effort) {
         this.effort = effort;
     }
+    
     public void setNotes(String notes) {
         this.notes = notes;
     }
+    
+    public void setUser(AppUser user) {
+        this.user = user;
+    }
+
     public void setBoulder(Boulder boulder) {
         this.boulder = boulder;
     }

@@ -49,7 +49,7 @@
                         <select id="boulderList" th:field="*{boulder}" class="form-control" required>
                         <option value="">Select a boulder</option>
                         <option th:each="boulder: ${boulders}" th:value="${boulder.boulderId}"
-                                th:text=" ${boulder.color} + ' ' + ${boulder.grade}+' at '+ ${boulder.gym.company} + ' ' + ${boulder.gym.location}">
+                                th:text=" ${boulder.color} + ' ' + ${boulder.grade} + ' at ' + ${boulder.gym.company} + ' ' + ${boulder.gym.location}">
                         </option>
                     </select>
                     </div>
@@ -62,35 +62,50 @@
 
                         <div class="form-field">
                             <label for="date">Date</label>
-                            <input type="date" th:field="*{date}" placeholder="e.g 29.11.2026">
+                            <div class="form-instruction">
+                                Pick a date
+                            </div>
+                            <input type="date" th:field="*{date}">
                         </div>
 
                         <div class="form-field">
                             <label for="attempts">Attempts</label>
-                            <input type="number" th:field="*{tryCount}" placeholder="e.g 3">
+                            <div class="form-instruction">
+                                Number of attempts eg. "3"
+                            </div>
+                            <input type="number" th:field="*{tryCount}">
                         </div>
 
                         <div class="form-field">
                             <label for="status">Status</label>
+                            <div class="form-instruction">
+                                Flash / Sent / Attempted / Projecting
+                            </div>
                             <input type="text" th:field="*{status}" placeholder="e.g Projecting">
                         </div>
 
                         <div class="form-field">
                             <label for="effort">Effort</label>
+                            <div class="form-instruction">
+                                Rate your effort; Easy / Moderate / Hard
+                            </div>
                             <input type="text" th:field="*{effort}" placeholder="e.g Hard">
                         </div>
 
                         <div class="form-field">
                             <label for="notes">Notes</label>
-                            <input type="text" th:field="*{notes}" placeholder="Additional remarks">
+                            <div class="form-instruction">
+                                What worked, and what would you try next time? 
+                            </div>
+                            <textarea type="text" th:field="*{notes}" rows="5" placeholder="Write your notes here..."></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="button-row">
-                    <button type="submit" class="action-button" id="submit">Save</button>
-                    <a th:href="@{/boulders}" class="action-button" id="back">&larr; Back</a>
+                    <button type="submit" class="action-button" id="submit">&#10004; Save</button>
+                    <a th:href="@{/boulders}" class="action-button" id="back">&larrhk; Previous Page</a>
                 </div>
-        </form>
+            </form>
 
     </div>
 

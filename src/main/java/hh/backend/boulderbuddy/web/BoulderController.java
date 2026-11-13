@@ -41,6 +41,7 @@ public class BoulderController {
    
     }
 
+
     /* All */
     @GetMapping("/boulders") /* Request endpoint */
     public String boulderList(Model model) {
@@ -55,16 +56,16 @@ public class BoulderController {
         model.addAttribute("boulder", new Boulder());
         model.addAttribute("gyms", gymRepository.findAll());
         return "addboulder"; /* HTML */
-        /* return "add"; /* HTML */ 
     }
-    // /* Edit */
-    // @GetMapping("edit/{id}")
-    // @PreAuthorize("hasAuthority('ADMIN')")  /* Authorized for 'ADMIN' -role */
-    // public String editBoulder(@PathVariable("id") Long boulderId, Model model) {
-    //     model.addAttribute("boulder", boulderRepository.findById(boulderId));
-    //     model.addAttribute("gyms", gymRepository.findAll());
-    //     return "/edit";
-    // }  
+
+    /* Edit */
+    @GetMapping("edit/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")  /* Authorized for 'ADMIN' -role */
+    public String editBoulder(@PathVariable("id") Long boulderId, Model model) {
+        model.addAttribute("boulder", boulderRepository.findById(boulderId));
+        model.addAttribute("gyms", gymRepository.findAll());
+        return "editboulder";
+    }  
 
     /* Save */
     @PostMapping("/save")

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Boulderlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+
+    <header class="header">
+
+        <h1>BoulderBuddy</h1>
+
+        <div class="header-user">
+            <p>Welcome, <span sec:authentication="name">Username</span>!</p>
+
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="action-button" id="sign-out">
+            </form>
+        </div>
+
+    </header>
+
+    <nav class="navigation">
+        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/gyms}">Gyms</a>
+        <a th:href="@{/boulders}">Boulders</a>
+        <a th:href="@{/logbook}" id="selected">Logbook</a>
+    </nav>
+
+    <!-- ** ADMIN VIEW ** -->
+
+    <div>
+
+        <h1 class="page-title"> Log Boulder</h1>
+
+        <!-- FORM -->
+        <form th:object="${log}" th:action="@{../savelog}" method="post" class="form">
+
+            <div class="form-section">
+                <h2 class="section-title"> Boulder</h2>
+
+                <div class="form-row">
+                    
+                    <div class="form-field">
+                        <label for="boulderList"></label>
+                        <select id="boulderList" th:field="*{boulder}" class="form-control" required>
+                            <option th:each="boulder: ${boulders}" th:value="${boulder.boulderId}"  disabled
+                                    th:text=" ${boulder.color} + ' ' + ${boulder.grade} + ' ' + ${boulder.gym.company} + ' at ' + ${boulder.gym.location}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="secondary">
+                    <h2 class="section-title">Log Details</h2>
+
+                    <div class="form-row">
+
+                        <div class="form-field">
+                            <label for="logId"></label>
+                            <input type="hidden" th:field="*{logId}">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="date">Date</label>
+                            <div class="form-instruction">
+                                Pick a date
+                            </div>
+                            <input type="date" th:field="*{date}">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="attempts">Attempts</label>
+                            <div class="form-instruction">
+                                Number of attempts eg. "3"
+                            </div>
+                            <input type="number" th:field="*{tryCount}">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="status">Status</label>
+                            <div class="form-instruction">
+                                Flash / Sent / Attempted / Projecting
+                            </div>
+                            <input type="text" th:field="*{status}">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="effort">Effort</label>
+                            <div class="form-instruction">
+                                Rate your effort; Easy / Moderate / Hard
+                            </div>
+                            <input type="text" th:field="*{effort}">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="notes">Notes</label>
+                            <div class="form-instruction">
+                                What worked, and what would you try next time? 
+                            </div>
+                            <textarea type="text" th:field="*{notes}" rows="5" placeholder="Write your notes here..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-row">
+                <input type="submit" value="Save" class="action-button" id="submit"></input>
+                <a th:href="@{/boulders}" class="action-button" id="back">Cancel</a>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

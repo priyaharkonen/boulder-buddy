@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Boulderlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+
+    <header class="header">
+
+        <h1>BoulderBuddy</h1>
+
+        <div class="header-user">
+            <p>Welcome, <span sec:authentication="name">Username</span>!</p>
+
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="action-button" id="sign-out">
+            </form>
+        </div>
+
+    </header>
+
+    <nav class="navigation">
+        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/gyms}" id="selected">Gyms</a>
+        <a th:href="@{/boulders}">Boulders</a>
+        <a th:href="@{/logbook}">Logbook</a>
+    </nav>
+
+    <div>
+
+        <h1 class="page-title"> Gyms </h1>
+
+        <!-- TABLE -->
+       <div class="form-section">
+                <h2 class="section-title">Gym Page Under Development</h2>
+
+                <p> This page will list climbing gyms by operator, with prices, opening hours, and locations. 
+                    You may also be able to browse the current routes at each gym. </p>
+
+                <div class="form-row">
+                    
+                    <div class="form-field">
+                        <h3>In the meantime, check out Boulders and Logbook. </h3>
+                        <div class="button-row">
+                            <a th:href="@{/boulders}" class="action-button" id="back">Boulders</a>
+                            <a th:href="@{/logbook}" class="action-button" id="back">Logbook</a>
+                        </div>
+                    </div>
+                </div>
+    
+        </div>
+
+</body>
+
+</html>

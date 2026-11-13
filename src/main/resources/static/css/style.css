@@ -124,15 +124,23 @@ td {
     padding: 8px;
 }
 
+#nowrap {
+    white-space: nowrap;
+}
+
+#center {
+    text-align: center;
+}
+
 #options {
-        display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     white-space: nowrap;
 }
 
-
+/* BUTTONS */
 
 .button {
     font-size: 14px;
@@ -259,4 +267,11 @@ a#add,
 }
 .form #submit {
     align-self: flex-start;
+}
+
+.form-instruction {
+    margin: 4px 0 0;
+    font-size: 13px;
+    font-weight: normal;
+    color: #c3b2df;
 }

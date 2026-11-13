@@ -40,9 +40,19 @@ public class LogController {
     public String addBoulder(Model model) {
         model.addAttribute("log", new Log());
         model.addAttribute("boulders", boulderRepository.findAll());
+        /* return "addlog"; */ /* HTML */
         return "addlog"; /* HTML */
-        /* return "add"; /* HTML */ 
     }
+
+    /* Edit */
+    @GetMapping("editlog/{id}")
+    @PreAuthorize("hasAuthority('USER')")  /* Authorized for 'USER' -role */
+    public String editLog(@PathVariable("id") Long logId, Model model) {
+        model.addAttribute("log", logRepository.findById(logId));
+        model.addAttribute("boulders", boulderRepository.findAll());
+        return "editlog";
+    }  
+
 
     @PostMapping("/savelog")
     @PreAuthorize("hasAuthority('USER')") /* Authorized for 'USER' -role */

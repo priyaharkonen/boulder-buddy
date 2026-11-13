@@ -46,7 +46,7 @@
                 <th>Wall type</th>
                 <th>Holds</th>
                 <th sec:authorize="hasAuthority('ADMIN')"> Options</th>
-          <!--       <th sec:authorize="hasAuthority('USER')"> Log</th> -->
+                <!-- <th sec:authorize="hasAuthority('USER')"> Log</th> -->
 
             </tr>
             <!-- table-contents -->
@@ -57,12 +57,15 @@
                 <td th:text="${boulder.wall}"></td>
                 <td th:text="${boulder.holds}"></td>
                 <td sec:authorize="hasAuthority('ADMIN')" id="options">
-                    <a th:href="@{/delete/{id}(id=${boulder.boulderId})}" class="action-button" id="delete">Remove</a>
-                    <a th:href="@{/edit/{id}(id=${boulder.boulderId})}" class="action-button" id="edit">Edit</a>
+                    <a th:href="@{/delete/{id}(id=${boulder.boulderId})}" class="action-button" id="delete">&#10008; Remove</a>
+                    <a th:href="@{/edit/{id}(id=${boulder.boulderId})}" class="action-button" id="edit">&#9998; Edit</a>
                 </td>
+<!--                 <td sec:authorize="hasAuthority('USER')">
+                    <a th:href="@{/addlogtest/{id}(id=${boulder.boulderId})}" class="action-button" id="add">&#10010; Log this boulder</a>
+                </td> -->
             </tr>
         </table>
-        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/add}" class="action-button" id="add">Add Boulder</a>
+        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/add}" class="action-button" id="add">&#10010; Add Boulder</a>
         <a sec:authorize="hasAuthority('USER')" th:href="@{/addlog}" class="action-button" id="add">&#10010; Add Log</a>
     </div>
 

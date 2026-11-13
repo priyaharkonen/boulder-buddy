@@ -40,6 +40,7 @@
 
             <!-- table-columns -->
             <tr>
+                <th sec:authorize="hasAuthority('ADMIN')"> User</th>
                 <th>Boulder</th>
                 <th>Date</th>
                 <th>Attempts</th>
@@ -50,16 +51,18 @@
             </tr>
             <!-- table-contents -->
             <tr th:each="log: ${logs}">
+                <td sec:authorize="hasAuthority('ADMIN')" 
+                    th:text="${log.user != null ? log.user.username : 'Unknown'}"></td>
                 <td th:text="${log.boulder.color} + ' ' + ${log.boulder.grade}"></td>
-                <td th:text="${log.date}"></td>
-                <td th:text="${log.tryCount}"></td>
+                <td th:text="${log.date}" id="nowrap"></td>
+                <td th:text="${log.tryCount}" id="center"></td>
                 <td th:text="${log.status}"></td>
                 <td th:text="${log.effort}"></td>
                 <td th:text="${log.notes}"></td>
                 
                 <td id="options">
-                    <a th:href="@{/edit/{id}(id=${log.logId})}" class="action-button" id="edit">&#9998; Edit</a>
-                    <a th:href="@{/delete/{id}(id=${log.logId})}" class="action-button" id="delete">&#10008; Remove</a>
+                    <a th:href="@{/deletelog/{id}(id=${log.logId})}" class="action-button" id="delete">&#10008; Remove</a>
+                    <a sec:authorize="hasAuthority('USER')" th:href="@{/editlog/{id}(id=${log.logId})}" class="action-button" id="edit">&#9998; Edit</a>
                 </td>
             </tr>
         
