@@ -69,7 +69,7 @@ public class BoulderBuddyApplication {
 					"$2a$12$FCOhoMNffDEXD0b0L8Nf4eXxVyAsKcY5faV2qCAjECsEOqUhp3/o2", /* priya123 */
 					"priya.harkonen@gmail.com", 
 					"USER");
-				
+			
 			aRepository.save(demoUser1);
 			aRepository.save(demoUser2);
 			aRepository.save(demoUser3);

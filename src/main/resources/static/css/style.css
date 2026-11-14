@@ -81,6 +81,10 @@ p, td {
     text-decoration: none;
 
 }
+.navigation .nav-disabled {
+    color: #635b70;
+    cursor: not-allowed;
+}
 
 #secondary-nav {
     display: flex;
@@ -92,6 +96,7 @@ p, td {
     border-top-right-radius: 14px;
 
 }
+
 
 #selected {
     background-color: #3D1773;
