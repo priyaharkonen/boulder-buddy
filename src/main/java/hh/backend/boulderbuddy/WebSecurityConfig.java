@@ -15,8 +15,8 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure (HttpSecurity http) throws Exception {
 
         http
-        .authorizeHttpRequests( authorize -> authorize
-            .requestMatchers("/css/**","/", "/boulders").permitAll() 
+        .authorizeHttpRequests(authorize -> authorize
+            .requestMatchers("/css/**", "/boulders").permitAll()
             .anyRequest().authenticated()
         )
 
