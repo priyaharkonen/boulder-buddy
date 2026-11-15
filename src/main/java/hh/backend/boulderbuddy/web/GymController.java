@@ -66,7 +66,7 @@ public class GymController {
     @PreAuthorize("hasAuthority('ADMIN')") /* Authorized for 'ADMIN' -role */
     public String saveLog(Gym gym) {
         gymRepository.save(gym);
-        return "redirect:/gymlist";
+        return "redirect:/gyms";
     }
 
     /* Delete */
@@ -74,7 +74,7 @@ public class GymController {
     @PreAuthorize("hasAuthority('ADMIN')") /* Authorized for 'ADMIN' -role */
     public String deleteLog(@PathVariable("id") Long gymId, Model model) {
         gymRepository.deleteById(gymId);
-        return "redirect:/gymlist";
+        return "redirect:/gyms";
     } 
 
     

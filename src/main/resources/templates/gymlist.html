@@ -50,7 +50,9 @@
             <!-- table-contents -->
             <tr th:each="gym: ${gyms}">
                 <td th:text="${gym.company}"></td>
-                <td th:text="${gym.location}"></td>
+                <td>
+                    <span th:text="${gym.location}"></span><br>
+                </td>
                 <td>
                     Monday to Friday: <span th:text="${gym.weekOpening}"></span><br>
                     Saturday and Sunday: <span th:text="${gym.weekEndOpening}"></span>
