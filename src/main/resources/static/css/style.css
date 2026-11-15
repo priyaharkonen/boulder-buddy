@@ -248,6 +248,18 @@ a#add,
     gap: 12px;
 }
 
+#selection-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+#item {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0;
+}
+
 .form .form-field {
     display: flex;
     flex-direction: column;

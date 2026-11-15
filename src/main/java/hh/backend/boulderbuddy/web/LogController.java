@@ -53,7 +53,7 @@ public class LogController {
         return "editlog";
     }  
 
-
+    /* Save */
     @PostMapping("/savelog")
     @PreAuthorize("hasAuthority('USER')") /* Authorized for 'USER' -role */
     public String saveLog(Log log) {
@@ -61,13 +61,13 @@ public class LogController {
         return "redirect:/logbook";
     }
 
-    /* @GetMapping("delete/{id}") */
-    @GetMapping("deleteLog/{id}")
-    @PreAuthorize("hasAuthority('USER')")  /* Authorized for 'USER' -role */
+    /* Delete */
+    @GetMapping("deletelog/{id}")
+    /* @PreAuthorize("hasAuthority('USER')")  */ /* Authorized for 'USER' -role */
     public String deleteLog(@PathVariable("id") Long logId, Model model) {
         logRepository.deleteById(logId);
         return "redirect:/logbook";
-    }  
+    } 
 
     
 }

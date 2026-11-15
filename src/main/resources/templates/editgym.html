@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Boulderlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+
+    <header class="header">
+
+        <h1>BoulderBuddy</h1>
+
+        <div class="header-user">
+            <p>Welcome, <span sec:authentication="name">Username</span>!</p>
+
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="action-button" id="sign-out">
+            </form>
+        </div>
+
+    </header>
+
+    <nav class="navigation">
+        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/gyms}"id="selected">Gyms</a>
+        <a th:href="@{/boulders}">Boulders</a>
+        <a th:href="@{/logbook}">Logbook</a>
+    </nav>
+
+    <!-- ** ADMIN VIEW ** -->
+
+    <div>
+
+        <h1 class="page-title"> Log Boulder</h1>
+
+        <!-- FORM -->
+        <form th:object="${gym}" th:action="@{../savegym}" method="post" class="form">
+
+            <div class="form-section">
+                <h2 class="section-title">Company</h2>
+
+                <div class="form-field">
+                    <label for="boulderId"></label>
+                    <input type="hidden" th:field="*{gymId}">
+                </div>
+
+                <div class="form-field" id="selection-group"> 
+                    <div id="item">
+                        <input type="checkbox" th:field="*{company}" th:value="ka">
+                        <label for="ka">KiipeilyAreena</label>
+                        <input type="checkbox" th:field="*{company}" th:value="bk">
+                        <label for="bk">Boulderkeskus</label>
+                        <input type="checkbox" th:field="*{company}" th:value="konepaja">
+                        <label for="konepaja">Project konepaja</label>
+                    </div>
+
+                </div>
+
+                <div id="secondary">
+                    <h2 class="section-title">Locations</h2>
+
+                    <div id="selection-group">
+                        <p>KiipeilyAreena</p>
+                        
+                        <div id="item">
+                            <input type="radio" th:field="*{location}" th:value="Ristikko">
+                            <label for="ristikko">Ristikko</label>
+                            <input type="radio" th:field="*{location}" th:value="Kalasatama">
+                            <label for="redi">Kalasatama</label>
+                            <input type="radio" th:field="*{location}" th:value="Salmisaari">
+                            <label for="salmis">Salmisaari</label>
+                        </div>
+                    </div>
+                    
+                    <div id="selection-group">
+                        <p>Boulderkeskus</p>
+
+                        <div id="item">
+                            <input type="radio" th:field="*{location}" th:value="Pasila">
+                            <label for="pasila">Pasila</label>
+                            <input type="radio" th:field="*{location}" th:value="Konala">
+                            <label for="konala">Konala</label>
+                            <input type="radio" th:field="*{location}" th:value="Herttoniemi">
+                            <label for="hertsikka">Herttoniemi</label>
+                            <input type="radio" th:field="*{location}" th:value="Espoo">
+                            <label for="espoo">Espoo</label>
+                        </div>
+                    
+                        <div id="selection-group">
+                        <p>Project Konepaja</p>
+
+                        <div id="item">
+                            <input type="radio" th:field="*{location}" th:value="Pasila">
+                            <label for="konepaja">Konepaja</label>
+
+
+                    <div id="secondary">
+                    <h2 class="section-title">Opening Hours</h2>
+
+                    <div class="form-row">
+                        
+                        <div class="form-field">
+                            <label for="weekOpening">Weekday Opening</label>
+                            <div class="form-instruction">
+                                Add Opening Hours for weekdays
+                            </div>
+                            <input type="text" th:field="*{weekOpening}" placeholder="e.g 10-22">
+                        </div>
+                        <div class="form-field">
+                            <label for="weekOpening">Weekend Opening</label>
+                            <div class="form-instruction">
+                                Add Opening Hours for weekends
+                            </div>
+                            <input type="text" th:field="*{weekEndOpening}" placeholder="e.g 11-20">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-row">
+                    <button type="submit" class="action-button" id="submit">&#10004; Save</button>
+                    <a th:href="@{/boulders}" class="action-button" id="back">&larrhk; Previous Page</a>
+                </div>
+            </form>
+
+    </div>
+
+</body>
+
+</html>

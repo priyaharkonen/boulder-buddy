@@ -39,9 +39,43 @@ public class GymController {
     @GetMapping("/gyms")
     public String gymList(Model model) {
         model.addAttribute("gyms", gymRepository.findAll());
-
         return "gymlist"; /* HTML */
     }
+    
+    /* Log */
+    @GetMapping("/addgym") /* Request endpoint */
+    @PreAuthorize("hasAuthority('ADMIN')") /* Authorized for 'ADMIN' -role */
+    public String addGym(Model model) {
+        model.addAttribute("gym", new Gym());
+        model.addAttribute("boulders", boulderRepository.findAll());
+        /* return "addlog"; */ /* HTML */
+        return "addgym"; /* HTML */
+    }
 
+    /* Edit */
+    @GetMapping("editgym/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")  /* Authorized for 'ADMIN' -role */
+    public String editLog(@PathVariable("id") Long gymId, Model model) {
+        model.addAttribute("gym", gymRepository.findById(gymId));
+        model.addAttribute("boulders", boulderRepository.findAll());
+        return "editgym";
+    }  
 
+    /* Save */
+    @PostMapping("/savegym")
+    @PreAuthorize("hasAuthority('ADMIN')") /* Authorized for 'ADMIN' -role */
+    public String saveLog(Gym gym) {
+        gymRepository.save(gym);
+        return "redirect:/gymlist";
+    }
+
+    /* Delete */
+    @GetMapping("deletegym/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')") /* Authorized for 'ADMIN' -role */
+    public String deleteLog(@PathVariable("id") Long gymId, Model model) {
+        gymRepository.deleteById(gymId);
+        return "redirect:/gymlist";
+    } 
+
+    
 }

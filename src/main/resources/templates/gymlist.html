@@ -36,24 +36,36 @@
         <h1 class="page-title"> Gyms </h1>
 
         <!-- TABLE -->
-       <div class="form-section">
-                <h2 class="section-title">Gym Page Under Development</h2>
+        <table class="table">
 
-                <p> This page will list climbing gyms by operator, with prices, opening hours, and locations. 
-                    You may also be able to browse the current routes at each gym. </p>
+            <!-- table-columns -->
+            <tr>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Opening Hours</th>
+                <th sec:authorize="hasAuthority('ADMIN')"> Options</th>
+                <!-- <th sec:authorize="hasAuthority('USER')"> Log</th> -->
 
-                <div class="form-row">
-                    
-                    <div class="form-field">
-                        <p>In the meantime, check out Boulders and Logbook. </p>
-                        
-                            <a th:href="@{/boulders}" class="action-button" id="back">Boulders</a>
-                            <a th:href="@{/logbook}" class="action-button" id="back">Logbook</a>
-                        
-                    </div>
-                </div>
-    
-        </div>
+            </tr>
+            <!-- table-contents -->
+            <tr th:each="gym: ${gyms}">
+                <td th:text="${gym.company}"></td>
+                <td th:text="${gym.location}"></td>
+                <td>
+                    Monday to Friday: <span th:text="${gym.weekOpening}"></span><br>
+                    Saturday and Sunday: <span th:text="${gym.weekEndOpening}"></span>
+                </td>
+                <td sec:authorize="hasAuthority('ADMIN')" id="options">
+                    <a th:href="@{/deletegym/{id}(id=${gym.gymId})}" class="action-button" id="delete">&#10008; Remove</a>
+                    <a th:href="@{/editgym/{id}(id=${gym.gymId})}" class="action-button" id="edit">&#9998; Modify</a>
+                </td>
+<!--                 <td sec:authorize="hasAuthority('USER')">
+                    <a th:href="@{/addlogtest/{id}(id=${boulder.boulderId})}" class="action-button" id="add">&#10010; Log this boulder</a>
+                </td> -->
+            </tr>
+        </table>
+        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/addgym}" class="action-button" id="add">&#10010; Add Gym</a>
+    </div>
 
 </body>
 

@@ -36,6 +36,35 @@
         <form th:object="${boulder}" th:action="@{/save}" method="post" class="form">
 
             <div class="form-section">
+                <h2 class="section-title">Gym Details</h2>
+                
+                <div class="form-row">
+                    
+                    <div class="form-field">
+                        <label for="company">Company</label>
+                        <div class="form-instruction">
+                            Choose Company
+                        </div>
+                        <select id="company" th:field="*{gym}" class="form-control" required>
+                            <option value="">Select a gym</option>
+                            <option th:each="gym: ${gyms}" th:value="${gym.gymId}"
+                                th:text="${gym.company}">
+                            </option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="kaLocations">KiipeilyAreena Locations</label>
+                        <div class="form-instruction">
+                            Select Location
+                        </div>
+                        <input th:each="gym: ${gyms}" th:value="${gym.gymId}" type="radio" th:field="*{gym.location}">
+                    </div>
+                
+                </div>
+            </div>
+
+            <div class="form-section">
                 <h2 class="section-title">Route Details</h2>
 
                 <div class="form-row">
@@ -76,21 +105,6 @@
                 </div>
             </div>
 
-            <div class="form-section">
-                <h2 class="section-title">Gym Details</h2>
-
-                <div class="form-field">
-
-                    <label for="gymList">Gym</label>
-                    <select id="gymList" th:field="*{gym}" class="form-control" required>
-                        <option value="">Select a gym</option>
-                        <option th:each="gym: ${gyms}" th:value="${gym.gymId}"
-                            th:text="${gym.company} + ' ' + ${gym.location}">
-                        </option>
-                    </select>
-
-                </div>
-            </div>
             <div class="button-row">
                 <button type="submit" class="action-button" id="submit">&#10004;Save</button>
                 <a th:href="@{/boulders}" class="action-button" id="back">&larrhk; Prievious page</a>
