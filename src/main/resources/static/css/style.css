@@ -200,6 +200,11 @@ td {
 
 }
 
+#form-btn{
+    margin-top: 4px;
+    background-color: white;
+} 
+
 #add, 
 #submit,
 #save {
@@ -265,6 +270,7 @@ a#add,
     flex-direction: column;
     gap: 8px;
     margin-bottom: 8px;
+    margin-top: 4px;
 }
 
 .form label {

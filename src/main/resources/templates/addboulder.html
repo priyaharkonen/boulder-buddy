@@ -41,24 +41,21 @@
                 <div class="form-row">
                     
                     <div class="form-field">
-                        <label for="company">Gym</label>
+                        <label for="company">Gym and Location</label>
                         <select id="company" th:field="*{gym}" class="form-control" required>
-                            <option value="">Select a gym</option>
+                            <option value="">Choose one...</option>
                             <option th:each="gym: ${gyms}" th:value="${gym.gymId}"
-                                th:text="${gym.company}">
+                                th:text="${gym.company}  + ' ' + ${gym.location} ">
                             </option>
                         </select>
                     </div>
+                    
                     <div class="form-field">
-                        <label for="company">Location</label>
-                        <select id="company" th:field="*{gym}" class="form-control" required>
-                            <option value="">Choose location</option>
-                            <option th:each="gym: ${gyms}" th:value="${gym.gymId}"
-                                th:text="${gym.location}">
-                            </option>
-                        </select>
+                        <label for="newgym"> Can't find your gym?</label>
+                        <a th:href="@{/addgym}" class="action-button" id="form-btn">&#10010; Add Gym</a>
+
                     </div>
-                
+    
                 </div>
             </div>
 

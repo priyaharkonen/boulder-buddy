@@ -49,36 +49,37 @@ public class BoulderBuddyApplication {
 				new Boulder("White", "6C", "Slab", "Crimps", "Available", redi));
 			
 			/* Users */
-			AppUser	demoUser1 = 
-				new AppUser(
-					"bb-admin", 
-					"$2a$12$p2XeAKK0dm.puExf3bhzJOE9jDdjS0DgWPLKTAmcFNXKX8TXGYl/K", /* demoadmin */
-					"admin.demo@boulderbuddy.com", 
-					"ADMIN");
+			if (aRepository.count() == 0) {
+				
+				AppUser	demoUser1 = 
+					new AppUser(
+						"bb-admin", 
+						"$2a$12$p2XeAKK0dm.puExf3bhzJOE9jDdjS0DgWPLKTAmcFNXKX8TXGYl/K", /* demoadmin */
+						"admin.demo@boulderbuddy.com", 
+						"ADMIN");
+				
+				AppUser demoUser2 = 
+					new AppUser(
+						"bb-user", 
+						"$2a$12$DusC49YYlYkgmBKRirA.UO7.vpYVndpF4iaLTpMQKJZpQV4g.SJ5O", /* demouser */
+						"user.demo@boulderbuddy.com", 
+						"USER");
+				
+				AppUser demoUser3 = 
+					new AppUser(
+						"priiuska", 
+						"$2a$12$FCOhoMNffDEXD0b0L8Nf4eXxVyAsKcY5faV2qCAjECsEOqUhp3/o2", /* priya123 */
+						"priya.harkonen@gmail.com", 
+						"USER");
+				
+				aRepository.save(demoUser1);
+				aRepository.save(demoUser2);
+				aRepository.save(demoUser3);
+				/* Logs */
+				lRepository.save( new Log(LocalDate.of(2026, 10, 29), 3, "Sent", "Moderate", "Positiivinen yllätys kun sai sendattua session loppuun, kiva reitti",demoUser2, boulder1));
+				lRepository.save(new Log(LocalDate.of(2026, 11, 01), 6, "Projecting", "Hard", "First move seems impossible", demoUser3, boulder2));
+			}
 			
-			AppUser demoUser2 = 
-				new AppUser(
-					"bb-user", 
-					"$2a$12$DusC49YYlYkgmBKRirA.UO7.vpYVndpF4iaLTpMQKJZpQV4g.SJ5O", /* demouser */
-					"user.demo@boulderbuddy.com", 
-					"USER");
-			
-			AppUser demoUser3 = 
-				new AppUser(
-					"priiuska", 
-					"$2a$12$FCOhoMNffDEXD0b0L8Nf4eXxVyAsKcY5faV2qCAjECsEOqUhp3/o2", /* priya123 */
-					"priya.harkonen@gmail.com", 
-					"USER");
-			
-			aRepository.save(demoUser1);
-			aRepository.save(demoUser2);
-			aRepository.save(demoUser3);
-			
-			/* Logs */
-			lRepository.save( new Log(LocalDate.of(2026, 10, 29), 3, "Sent", "Moderate", "Positiivinen yllätys kun sai sendattua session loppuun, kiva reitti",demoUser2, boulder1));
-			lRepository.save(new Log(LocalDate.of(2026, 11, 01), 6, "Projecting", "Hard", "First move seems impossible", demoUser3, boulder2));
-
-
 		};
 	}
 

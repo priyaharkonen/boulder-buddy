@@ -34,7 +34,7 @@
 
     <div>
 
-        <h1 class="page-title"> Log Boulder</h1>
+        <h1 class="page-title"> Edit Log</h1>
 
         <!-- FORM -->
         <form th:object="${log}" th:action="@{../savelog}" method="post" class="form">
@@ -106,8 +106,8 @@
                     </div>
                 </div>
                 <div class="button-row">
-                <input type="submit" value="Save" class="action-button" id="submit"></input>
-                <a th:href="@{/boulders}" class="action-button" id="back">Cancel</a>
+                    <button type="submit" class="action-button" id="submit">&#10004; Save</button>
+                    <a th:href="@{/logbook}" class="action-button" id="back">&larrhk; Cancel</a>
             </div>
         </form>
 

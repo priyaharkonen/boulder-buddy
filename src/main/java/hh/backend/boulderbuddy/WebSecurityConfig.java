@@ -16,7 +16,7 @@ public class WebSecurityConfig {
 
         http
         .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/css/**", "/boulders").permitAll()
+            .requestMatchers("/css/**").permitAll()
             .anyRequest().authenticated()
         )
 
@@ -30,7 +30,8 @@ public class WebSecurityConfig {
         
         return http.build();
     }
-        @Bean
+    
+    @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
