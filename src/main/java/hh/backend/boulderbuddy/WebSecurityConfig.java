@@ -15,22 +15,38 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure (HttpSecurity http) throws Exception {
 
         http
+
+        /* CSS authorized without login and authentication required by default*/
         .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/css/**").permitAll()
+            .requestMatchers("/css/**").permitAll() 
             .anyRequest().authenticated()
         )
 
+        /* Skip CSRF checks for H2 console requests */
+        .csrf(csrf -> csrf
+            .ignoringRequestMatchers("/h2-console/**")
+        )
+
+        /* Allow frames for H2 -console */
+        .headers(headers -> headers
+            .frameOptions(frame -> frame
+                .sameOrigin()
+            )
+        )
+
+        /* Redirect to /boulders after login */
         .formLogin( loginForm -> loginForm
             .defaultSuccessUrl("/boulders", true)
             .permitAll()
         )
+        /* Log out enabled */
         .logout( logout -> logout
             .permitAll()
         );
         
         return http.build();
     }
-    
+    /* PasswordHash with BCrypt */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
