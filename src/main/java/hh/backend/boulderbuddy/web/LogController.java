@@ -29,7 +29,7 @@ public class LogController {
     
     /* All */
     @GetMapping("/logbook") /* Request endpoint */
-    public String boulderList(Model model) {
+    public String logBook(Model model) {
         model.addAttribute("logs", logRepository.findAll());
         return "logbook"; /* HTML */
     }
@@ -37,10 +37,9 @@ public class LogController {
     /* Log */
     @GetMapping("/addlog") /* Request endpoint */
     @PreAuthorize("hasAuthority('USER')") /* Authorized for 'USER' -role */
-    public String addBoulder(Model model) {
+    public String addLog(Model model) {
         model.addAttribute("log", new Log());
         model.addAttribute("boulders", boulderRepository.findAll());
-        /* return "addlog"; */ /* HTML */
         return "addlog"; /* HTML */
     }
 

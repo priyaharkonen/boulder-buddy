@@ -48,14 +48,13 @@ public class GymController {
     public String addGym(Model model) {
         model.addAttribute("gym", new Gym());
         model.addAttribute("boulders", boulderRepository.findAll());
-        /* return "addlog"; */ /* HTML */
         return "addgym"; /* HTML */
     }
 
     /* Edit */
     @GetMapping("editgym/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")  /* Authorized for 'ADMIN' -role */
-    public String editLog(@PathVariable("id") Long gymId, Model model) {
+    public String editGym(@PathVariable("id") Long gymId, Model model) {
         model.addAttribute("gym", gymRepository.findById(gymId));
         model.addAttribute("boulders", boulderRepository.findAll());
         return "editgym";
@@ -64,7 +63,7 @@ public class GymController {
     /* Save */
     @PostMapping("/savegym")
     @PreAuthorize("hasAuthority('ADMIN')") /* Authorized for 'ADMIN' -role */
-    public String saveLog(Gym gym) {
+    public String saveGym(Gym gym) {
         gymRepository.save(gym);
         return "redirect:/gyms";
     }
@@ -72,7 +71,7 @@ public class GymController {
     /* Delete */
     @GetMapping("deletegym/{id}")
     @PreAuthorize("hasAuthority('ADMIN')") /* Authorized for 'ADMIN' -role */
-    public String deleteLog(@PathVariable("id") Long gymId, Model model) {
+    public String deleteGym(@PathVariable("id") Long gymId, Model model) {
         gymRepository.deleteById(gymId);
         return "redirect:/gyms";
     } 
