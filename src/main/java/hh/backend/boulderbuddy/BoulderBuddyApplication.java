@@ -43,10 +43,10 @@ public class BoulderBuddyApplication {
 
 			/* Boulders */
 			Boulder boulder1 = bRepository.save(
-				new Boulder("Blue", "6C", "Slab", "Crimps and pockets", "Available", salmis));
+				new Boulder("Blue", "6C", "Slab", "Crimps and pockets", "On the Wall", salmis));
 			
 			Boulder boulder2 = bRepository.save(
-				new Boulder("White", "6C", "Slab", "Crimps", "Available", redi));
+				new Boulder("White", "6C", "Slab", "Crimps", "Taken Down", redi));
 			
 			/* Users */
 			if (aRepository.count() == 0) {
