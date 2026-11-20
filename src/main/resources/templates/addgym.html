@@ -25,7 +25,7 @@
 
     <nav class="navigation">
         <a th:href="@{/home}">Home</a>
-        <a th:href="@{/gyms}"id="selected">Gyms</a>
+        <a th:href="@{/gyms}" id="selected">Gyms</a>
         <a th:href="@{/boulders}">Boulders</a>
         <a th:href="@{/logbook}">Logbook</a>
     </nav>
@@ -34,91 +34,107 @@
 
     <div>
 
-        <h1 class="page-title"> Log Boulder</h1>
+        <h1 class="page-title">Add Gym</h1>
 
         <!-- FORM -->
         <form th:object="${gym}" th:action="@{/savegym}" method="post" class="form">
 
             <div class="form-section">
                 <h2 class="section-title">Company</h2>
+                <p> Select Company and Location</p>
 
-                <div class="form-field" id="selection-group"> 
-                    <div id="item">
-                        <input type="radio" th:field="*{company}" th:value="KiipeilyAreena">
-                        <label for="KiipeilyAreena">KiipeilyAreena</label>
-                        <input type="radio" th:field="*{company}" th:value="Boulderkeskus">
-                        <label for="Boulderkeskus">Boulderkeskus</label>
-                        <input type="radio" th:field="*{company}" th:value="ProjectKonepaja">
-                        <label for="ProjectKonepaja">Project konepaja</label>
+                <div class="form-row">
+
+                    <div class="form-field">
+                        <div id="item">
+                            <input type="radio" th:field="*{company}" th:value="KiipeilyAreena">
+                            <label for="KiipeilyAreena">KiipeilyAreena</label>
+                            <input type="radio" th:field="*{company}" th:value="Boulderkeskus">
+                            <label for="Boulderkeskus">Boulderkeskus</label>
+                            <input type="radio" th:field="*{company}" th:value="ProjectKonepaja">
+                            <label for="ProjectKonepaja">Project konepaja</label>
+
+                            <div class="form-field">
+                                <label for="location">Location</label>
+                                <select id="location" th:field="*{location}" class="form-control" required>
+                                    <option value="">Choose one...</option>
+
+                                    <optgroup label="KiipeilyAreena">
+                                        <option value="Ristikko">Ristikko</option>
+                                        <option value="Redi">Kalasatama (Redi)</option>
+                                        <option value="Salmisaari">Salmisaari</option>
+                                    </optgroup>
+
+                                    <optgroup label="Boulderkeskus">
+                                        <option value="Pasila">Pasila</option>
+                                        <option value="Konala">Konala</option>
+                                        <option value="Herttoniemi">Herttoniemi</option>
+                                        <option value="Espoo">Espoo</option>
+                                    </optgroup>
+
+                                    <optgroup label="Project Konepaja">
+                                        <option value="Konepaja">Konepaja</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
-
                 <div id="secondary">
-                    <h2 class="section-title">Locations</h2>
-
-                    <div id="selection-group">
-                        <p>KiipeilyAreena</p>
-                        
-                        <div id="item">
-                            <input type="checkbox" th:field="*{location}" th:value="Ristikko">
-                            <label for="ristikko">Ristikko</label>
-                            <input type="checkbox" th:field="*{location}" th:value="Kalasatama">
-                            <label for="redi">Kalasatama</label>
-                            <input type="checkbox" th:field="*{location}" th:value="Salmisaari">
-                            <label for="salmis">Salmisaari</label>
-                        </div>
-                    </div>
-                    
-                    <div id="selection-group">
-                        <p>Boulderkeskus</p>
-
-                        <div id="item">
-                            <input type="checkbox" th:field="*{location}" th:value="Pasila">
-                            <label for="pasila">Pasila</label>
-                            <input type="checkbox" th:field="*{location}" th:value="Konala">
-                            <label for="konala">Konala</label>
-                            <input type="checkbox" th:field="*{location}" th:value="Herttoniemi">
-                            <label for="hertsikka">Herttoniemi</label>
-                            <input type="checkbox" th:field="*{location}" th:value="Espoo">
-                            <label for="espoo">Espoo</label>
-                        </div>
-                    
-                        <div id="selection-group">
-                        <p>Project Konepaja</p>
-
-                        <div id="item">
-                            <input type="checkbox" th:field="*{location}" th:value="Pasila">
-                            <label for="konepaja">Konepaja</label>
-
-
-                    <div id="secondary">
-                    <h2 class="section-title">Opening Hours</h2>
+                    <h2 class="section-title">New Company and Location</h2>
 
                     <div class="form-row">
-                        
+
                         <div class="form-field">
-                            <label for="weekOpening">Weekday Opening</label>
+                            <label for="other">Company Name</label>
                             <div class="form-instruction">
-                                Add Opening Hours for weekdays
+                                Write the name of new company
                             </div>
-                            <input type="text" th:field="*{weekOpening}" placeholder="e.g 10-22">
+                            <input type="text" th:field="*{company}" placeholder="Enter company name">
                         </div>
+
                         <div class="form-field">
-                            <label for="weekOpening">Weekend Opening</label>
+                            <label for="other">Location name</label>
                             <div class="form-instruction">
-                                Add Opening Hours for weekends
+                                Add location
                             </div>
-                            <input type="text" th:field="*{weekEndOpening}" placeholder="e.g 11-20">
+                            <input type="text" th:field="*{company}" placeholder="Enter location">
                         </div>
+
                     </div>
                 </div>
+            </div>
 
-                <div class="button-row">
-                    <button type="submit" class="action-button" id="submit">&#10004; Save</button>
-                    <a th:href="@{/gyms}" class="action-button" id="back">&larrhk; Back</a>
+            <div class="form-section">
+
+                <h2 class="section-title">Opening Hours</h2>
+
+                <div class="form-row">
+
+                    <div class="form-field">
+                        <label for="weekOpening">Weekday Opening</label>
+                        <div class="form-instruction">
+                            Add Opening Hours for weekdays
+                        </div>
+                        <input type="text" th:field="*{weekOpening}" placeholder="e.g 10-22">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="weekOpening">Weekend Opening</label>
+                        <div class="form-instruction">
+                            Add Opening Hours for weekends
+                        </div>
+                        <input type="text" th:field="*{weekEndOpening}" placeholder="e.g 11-20">
+                    </div>
                 </div>
-            </form>
+            </div>
+
+            <div class="button-row">
+                <button type="submit" class="action-button" id="submit">&#10004; Save</button>
+                <a th:href="@{/gyms}" class="action-button" id="back">&larrhk; Back</a>
+            </div>
+
+        </form>
 
     </div>
 
