@@ -36,28 +36,40 @@
         <h1 class="page-title"> Boulders</h1>
 
         <!-- TABLE -->
+        <h2>On the wall</h2>
         <table class="table">
+            <div class="form-instruction" id="general">
+                Check out what's on the wall at each gym!
+            </div>
 
             <!-- table-columns -->
             <tr>
-                <th>Route</th>
-                <th>Gym</th>
-                <th>Status</th>
-                <th>Wall type</th>
-                <th>Holds</th>
+                <th>Route
+                    <div class="form-instruction">Color and Grade</div>
+                </th>
+                <th>Gym
+                    <div class="form-instruction">Company and Location</div>
+                </th>
+                <th>Wall type
+                    <div class="form-instruction"> Overhang, Slab, etc..</div>
+                </th>
+                <th>Holds
+                    <div class="form-instruction"> Crimps, Jugs, Slopers, etc... </div>
+                </th>
+                <th sec:authorize="hasAuthority('ADMIN')">Status</th>
                 <th sec:authorize="hasAuthority('ADMIN')"> Options</th>
                 <!-- <th sec:authorize="hasAuthority('USER')"> Log</th> -->
 
             </tr>
             <!-- table-contents -->
-            <tr th:each="boulder: ${boulders}">
+            <tr th:each="boulder : ${boulders.?[status == 'On the Wall']}">
                 <td th:text="${boulder.color} + ' ' + ${boulder.grade}"></td>
                 <td th:text="${boulder.gym.company} + ' ' + ${boulder.gym.location}"></td>
-                <td th:text="${boulder.status}"></td>
                 <td th:text="${boulder.wall}"></td>
                 <td th:text="${boulder.holds}"></td>
+                <td sec:authorize="hasAuthority('ADMIN')" th:text="${boulder.status}"></td>
                 <td sec:authorize="hasAuthority('ADMIN')" id="options">
-                    <a th:href="@{/delete/{id}(id=${boulder.boulderId})}" class="action-button" id="delete">&#10008; Remove</a>
+                    <a th:href="@{/boulders/{id}/unavailable(id=${boulder.boulderId})}" class="action-button" id="delete">&#10008; Take Down</a>
                     <a th:href="@{/edit/{id}(id=${boulder.boulderId})}" class="action-button" id="edit">&#9998; Edit</a>
                 </td>
 <!--                 <td sec:authorize="hasAuthority('USER')">
@@ -65,8 +77,42 @@
                 </td> -->
             </tr>
         </table>
-        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/add}" class="action-button" id="add">&#10010; Add Boulder</a>
-        <a sec:authorize="hasAuthority('USER')" th:href="@{/addlog}" class="action-button" id="add">&#10010; Add Log</a>
+
+        <h2>Taken Down</h2>
+        <table class="table">
+            <div class="form-instruction" id="general">
+                Browse boulders that have been taken down.
+            </div>
+            <tr>
+                <th>Route</th>
+                <th>Gym</th>
+                <th>Wall type</th>
+                <th>Holds</th>
+                <th sec:authorize="hasAuthority('ADMIN')">Status</th>
+                <th sec:authorize="hasAuthority('ADMIN')"> Options</th>
+            </tr>
+
+            <tr th:each="boulder : ${boulders.?[status == 'Taken Down']}">
+                <td th:text="${boulder.color} + ' ' + ${boulder.grade}"></td>
+                <td th:text="${boulder.gym.company} + ' ' + ${boulder.gym.location}"></td>
+                <td th:text="${boulder.wall}"></td>
+                <td th:text="${boulder.holds}"></td>
+                <td sec:authorize="hasAuthority('ADMIN')" th:text="${boulder.status}"></td>
+                <td sec:authorize="hasAuthority('ADMIN')" id="options">
+                    <a th:href="@{/boulders/{id}/available(id=${boulder.boulderId})}" class="action-button" id="add">&larrhk; Restore</a>
+                    <a th:href="@{/edit/{id}(id=${boulder.boulderId})}" class="action-button" id="edit">&#9998; Edit</a>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="button-row">
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/add}" class="action-button" id="add">&#10010; Add Boulder</a>
+            <a sec:authorize="hasAuthority('USER')" th:href="@{/addlog}" class="action-button" id="add">&#10010; Add Log</a>
+        </div>
+        
+        <div sec:authorize="hasAuthority('USER')" class="form-instruction" id="call-to-action"> 
+            Psst! You can still log past attempts on boulders that have been taken down.
+        </div>
     </div>
 
 </body>

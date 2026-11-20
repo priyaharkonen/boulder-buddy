@@ -108,6 +108,7 @@ p, td {
     border-color: rgb(255 255 255 / 80%);
     fill: rgb(255 255 255 / 80%);
     width: 100%;
+    table-layout: auto;
 
 }
 
@@ -212,6 +213,13 @@ td {
 
 }
 
+a#delete,
+#edit{
+    display: inline-block;
+    margin-top: 12px;
+
+}
+
 a#add,
 #submit,
 #save,
@@ -298,3 +306,13 @@ a#add,
     font-weight: normal;
     color: #c3b2df;
 }
+
+#general {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#call-to-action{
+    margin-bottom: 10px;
+    font-size: 16px;
+} 

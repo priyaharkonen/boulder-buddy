@@ -40,68 +40,26 @@
         <form th:object="${gym}" th:action="@{/savegym}" method="post" class="form">
 
             <div class="form-section">
-                <h2 class="section-title">Company</h2>
-                <p> Select Company and Location</p>
-
+                <h2 class="section-title">Company and Location</h2>
+                
                 <div class="form-row">
 
                     <div class="form-field">
-                        <div id="item">
-                            <input type="radio" th:field="*{company}" th:value="KiipeilyAreena">
-                            <label for="KiipeilyAreena">KiipeilyAreena</label>
-                            <input type="radio" th:field="*{company}" th:value="Boulderkeskus">
-                            <label for="Boulderkeskus">Boulderkeskus</label>
-                            <input type="radio" th:field="*{company}" th:value="ProjectKonepaja">
-                            <label for="ProjectKonepaja">Project konepaja</label>
-
-                            <div class="form-field">
-                                <label for="location">Location</label>
-                                <select id="location" th:field="*{location}" class="form-control" required>
-                                    <option value="">Choose one...</option>
-
-                                    <optgroup label="KiipeilyAreena">
-                                        <option value="Ristikko">Ristikko</option>
-                                        <option value="Redi">Kalasatama (Redi)</option>
-                                        <option value="Salmisaari">Salmisaari</option>
-                                    </optgroup>
-
-                                    <optgroup label="Boulderkeskus">
-                                        <option value="Pasila">Pasila</option>
-                                        <option value="Konala">Konala</option>
-                                        <option value="Herttoniemi">Herttoniemi</option>
-                                        <option value="Espoo">Espoo</option>
-                                    </optgroup>
-
-                                    <optgroup label="Project Konepaja">
-                                        <option value="Konepaja">Konepaja</option>
-                                    </optgroup>
-                                </select>
-                            </div>
+                        <label for="other">Company Name</label>
+                        <div class="form-instruction">
+                            Write the name of company
                         </div>
+                        <input type="text" th:field="*{company}" placeholder="Enter company name">
                     </div>
-                </div>
-                <div id="secondary">
-                    <h2 class="section-title">New Company and Location</h2>
 
-                    <div class="form-row">
-
-                        <div class="form-field">
-                            <label for="other">Company Name</label>
-                            <div class="form-instruction">
-                                Write the name of new company
-                            </div>
-                            <input type="text" th:field="*{company}" placeholder="Enter company name">
+                    <div class="form-field">
+                        <label for="other">Location name</label>
+                        <div class="form-instruction">
+                            Add location
                         </div>
-
-                        <div class="form-field">
-                            <label for="other">Location name</label>
-                            <div class="form-instruction">
-                                Add location
-                            </div>
-                            <input type="text" th:field="*{company}" placeholder="Enter location">
-                        </div>
-
+                        <input type="text" th:field="*{location}" placeholder="Enter location">
                     </div>
+                
                 </div>
             </div>
 
@@ -126,15 +84,16 @@
                         </div>
                         <input type="text" th:field="*{weekEndOpening}" placeholder="e.g 11-20">
                     </div>
+                
                 </div>
             </div>
 
-            <div class="button-row">
-                <button type="submit" class="action-button" id="submit">&#10004; Save</button>
-                <a th:href="@{/gyms}" class="action-button" id="back">&larrhk; Back</a>
-            </div>
-
         </form>
+
+        <div class="button-row">
+            <button type="submit" class="action-button" id="submit">&#10004; Save</button>
+            <a th:href="@{/gyms}" class="action-button" id="back">&larrhk; Cancel</a>
+        </div>
 
     </div>
 

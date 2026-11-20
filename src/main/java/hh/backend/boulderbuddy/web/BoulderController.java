@@ -75,11 +75,25 @@ public class BoulderController {
         return "redirect:/boulders";
     }
 
-    /* Delete */
-    @GetMapping("delete/{id}")
+    /* Unavailable */
+    @GetMapping("boulders/{id}/unavailable")
     @PreAuthorize("hasAuthority('ADMIN')")  /* Authorized for 'ADMIN' -role */
-    public String deleteBoulder(@PathVariable("id") Long boulderId, Model model) {
-        boulderRepository.deleteById(boulderId);
+    public String markUnavailable(@PathVariable("id") Long boulderId, Model model) {
+        boulderRepository.findById(boulderId).ifPresent(boulderAvailability -> {
+            boulderAvailability.setStatus("Taken Down");
+            boulderRepository.save(boulderAvailability);
+        });
+        return "redirect:/boulders";
+    }  
+
+    /* Available */
+    @GetMapping("boulders/{id}/available")
+    @PreAuthorize("hasAuthority('ADMIN')")  /* Authorized for 'ADMIN' -role */
+    public String markAvailable(@PathVariable("id") Long boulderId, Model model) {
+        boulderRepository.findById(boulderId).ifPresent(boulderAvailability -> {
+            boulderAvailability.setStatus("On the Wall");
+            boulderRepository.save(boulderAvailability);
+        });
         return "redirect:/boulders";
     }  
 

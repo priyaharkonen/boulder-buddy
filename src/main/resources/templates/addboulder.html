@@ -76,8 +76,13 @@
 
                     <div class="form-field">
                         <label for="status">Status</label>
-                        <input type="text" th:field="*{status}" placeholder=" e.g Available">
+                        <select id="status" th:field="*{status}" class="form-control" required>
+                            <option value="">Choose one...</option>
+                            <option value="On the Wall">On the Wall</option>
+                            <option value="Taken Down">Taken Down</option>
+                        </select>
                     </div>
+
                 </div>
 
                 <div id="secondary">
@@ -102,7 +107,7 @@
 
             <div class="button-row">
                 <button type="submit" class="action-button" id="submit">&#10004;Save</button>
-                <a th:href="@{/boulders}" class="action-button" id="back">&larrhk; Back</a>
+                <a th:href="@{/boulders}" class="action-button" id="back">&larrhk; Cancel</a>
             </div>
 
         </form>

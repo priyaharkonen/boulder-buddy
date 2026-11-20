@@ -57,8 +57,13 @@
 
                     <div class="form-field">
                         <label for="status">Status</label>
-                        <input type="text" th:field="*{status}">
+                        <select id="status" th:field="*{status}" class="form-control" required>
+                            <option value="">Choose one...</option>
+                            <option value="On the Wall">On the Wall</option>
+                            <option value="Taken Down">Taken Down</option>
+                        </select>
                     </div>
+
                 </div>
 
                 <div id="secondary">
@@ -84,21 +89,23 @@
             <div class="form-section">
                 <h2 class="section-title">Gym Details</h2>
 
-                <div class="form-field">
+                <div class="form-row">
 
-                    <label for="gymList">Gym</label>
-                    <select id="gymList" th:field="*{gym}" class="form-control" required>
-                        <!-- <option value="">Select a gym</option> -->
-                        <option th:each="gym: ${gyms}" th:value="${gym.gymId}"
-                            th:text="${gym.company} + ' ' + ${gym.location}">
-                        </option>
-                    </select>
+                    <div class="form-field">
+                        <label for="gymList">Gym</label>
+                        <select id="gymList" th:field="*{gym}" class="form-control" required>
+                            <!-- <option value="">Select a gym</option> -->
+                            <option th:each="gym: ${gyms}" th:value="${gym.gymId}"
+                                th:text="${gym.company} + ' ' + ${gym.location}">
+                            </option>
+                        </select>
+                    </div>
 
                 </div>
             </div>
             <div class="button-row">
-                <input type="submit" value="Save" class="action-button" id="submit"></input>
-                <a th:href="@{/boulders}" class="action-button" id="back">Cancel</a>
+                <button type="submit" class="action-button" id="submit">&#10004;Save</button>
+                <a th:href="@{/boulders}" class="action-button" id="back">&larrhk; Cancel</a>
             </div>
 
         </form>

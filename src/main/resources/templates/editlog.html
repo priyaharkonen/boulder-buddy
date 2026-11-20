@@ -48,7 +48,7 @@
                         <label for="boulderList"></label>
                         <select id="boulderList" th:field="*{boulder}" class="form-control" required>
                             <option th:each="boulder: ${boulders}" th:value="${boulder.boulderId}"  disabled
-                                    th:text=" ${boulder.color} + ' ' + ${boulder.grade} + ' ' + ${boulder.gym.company} + ' at ' + ${boulder.gym.location}">
+                                    th:text=" ${boulder.color} + ' ' + ${boulder.grade} + ' at ' + ${boulder.gym.company} + '  ' + ${boulder.gym.location}">
                             </option>
                         </select>
                     </div>
@@ -103,13 +103,16 @@
                             </div>
                             <textarea type="text" th:field="*{notes}" rows="5" placeholder="Write your notes here..."></textarea>
                         </div>
+                   
                     </div>
                 </div>
-                <div class="button-row">
-                    <button type="submit" class="action-button" id="submit">&#10004; Save</button>
-                    <a th:href="@{/logbook}" class="action-button" id="back">&larrhk; Cancel</a>
             </div>
         </form>
+        
+        <div class="button-row">
+            <button type="submit" class="action-button" id="submit">&#10004; Save</button>
+            <a th:href="@{/logbook}" class="action-button" id="back">&larrhk; Cancel</a>
+        </div>
 
     </div>
 
